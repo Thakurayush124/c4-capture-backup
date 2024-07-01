@@ -53,16 +53,23 @@
     margin : 0 15px;
 
 }
+
 .vd {
-    position: relative; /* Ensure relative positioning for z-index */
-    z-index: 1; /* Ensure it is above the content */
-    width: 100%; /* Set the width to 100% */
-    max-width: 100%; /* Ensure it doesn't exceed its container */
-    height: 70%; /* Maintain aspect ratio */
-    margin: 0 auto; /* Center horizontally */
-    overflow: hidden; /* Hide any overflow if needed */
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
 }
 
+.video-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .content {
     background-color: black;
     color: white;
