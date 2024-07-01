@@ -1,0 +1,228 @@
+/* Navbar.css */
+.navbar {
+    background-color: #ffffff;
+    overflow: hidden;
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
+    padding: 0.5px 0;
+}
+
+.navbar-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.navbar-item {
+    padding: 10px 20px;
+
+}
+
+.navbar-item a {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    position: relative; /* Needed for the ::after pseudo-element */
+}
+
+.navbar-item a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: rgb(0, 0, 0);
+    transition: width 0.3s ease-in; /* Ease-in transition for width */
+}
+
+.navbar-item a:hover::after {
+    width: 100%;
+}
+
+
+.logo {
+    width: 90px; /* Adjust the width as needed */
+    height: 70px; /* Maintain aspect ratio */
+    padding: 2px 0;
+    margin : 0 15px;
+
+}
+.vd {
+    position: relative; /* Ensure relative positioning for z-index */
+    z-index: 1; /* Ensure it is above the content */
+    width: 100%; /* Set the width to 100% */
+    max-width: 100%; /* Ensure it doesn't exceed its container */
+    height: 70%; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center horizontally */
+    overflow: hidden; /* Hide any overflow if needed */
+}
+
+.content {
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 250px;
+    width: 100%;
+    padding: 80px 1px; /* Adjust padding as needed */
+    margin-top: -100px; /* Adjust negative margin to overlap with .vd */
+    position: relative; /* Ensure relative positioning */
+    z-index: 2; /* Ensure it is above the video */
+}
+
+.content p {
+    font-size: 20px; /* Adjust font size as needed */
+    line-height: 1.6; /* Adjust line height for readability */
+    margin-bottom: 20px; /* Add space below paragraph */
+}
+
+.button {
+    background-color: #000000;
+    color: white;
+    border:2px solid #ffffff;
+    padding: 5px 20px;
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+.grid-container-1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.grid-item-1 {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.grid-item-1:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.service-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
+
+.get-in-touch{
+    padding: 5px 0 ;
+    background-color: #000000;
+    color: #ffffff;
+    width:80%;
+    height:100%;
+    padding:5% 0 ;
+    margin:0 10%;
+    text-align: center;
+}
+button {
+    background-color: #fff;
+    border: 1px solid #25D366;
+    padding: 25px ;
+    position: relative;
+    width: 8.5em;
+    height: 2em;
+    transition: 0.5s;
+    font-size: 17px;
+    border-radius: 0.4em;
+    
+
+  }
+  
+  button p {
+    position: absolute;
+  
+    top: 0.4em;
+    left: 1.5em;
+    right: 1.5em;
+    margin: 0;
+    padding: 0;
+    transition: .5s;
+    color: #25D366;
+  }
+  
+  button svg {
+    position: absolute;
+    top: 0.45em;
+    right: 0.5em;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: 0.5s;
+    height: 1em;
+    fill: #fff
+  }
+  
+  button:hover p {
+    left: 0.5em;
+    color: #fff
+  }
+  
+  button:hover svg {
+    opacity: 1;
+  }
+  
+  button:hover {
+    background-color: #25D366;
+  }
+  
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:5px 0 ;
+
+}
+
+.foot-logo{
+    width: 150px; /* Adjust the width as needed */
+    height: 100px; /* Maintain aspect ratio */
+    margin:55px 65px;
+    scale:200%;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    width: 80%;
+    max-width: 300px;
+    margin:80px 75px;
+}
+
+.grid-item {
+   
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    font-size: 10px;
+    transition: background-color 0.3s;
+}
+
+.foot {
+    display: flex;
+     flex-direction: column ;
+     font-size: 12px;
+    margin: 5px 10px;
+    text-align: center;
+}
