@@ -1,8 +1,8 @@
 import React from "react";
 import './Home.css'; // Ensure the correct path to the CSS file
-import logo from './logo.png'; // Ensure the correct path to the logo image
 import video from './banni.mp4';
-import './service1.jpg'
+import Nav from '../component/Nav.js';
+import Footer from '../component/footer.js';
 
 
 const services = [
@@ -49,22 +49,7 @@ function Home() {
     };
     return (
         <>
-             <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-            <nav className="navbar">
-                <div className="left">
-                    <img src={logo} alt="Logo" className="logo" />
-                </div>
-                <div className="right">
-                    <ul className="navbar-list">
-                        <li className="navbar-item"><a href="/">Home</a></li>
-                        <li className="navbar-item"><a href="/about">About</a></li>
-                        <li className="navbar-item"><a href="/services">Services</a></li>
-                        <li className="navbar-item"><a href="/contact">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
+        <Nav />
             <div className="vd">
                 <video autoPlay loop muted src={video} className="video-element"></video>
             </div>
@@ -83,7 +68,39 @@ function Home() {
                     ))}
                 </div>
             </div>
-           
+            <div className="slider">
+      <input type="radio" name="testimonial" id="t-1" />
+      <input type="radio" name="testimonial" id="t-2" />
+      <input type="radio" name="testimonial" id="t-3" defaultChecked />
+      <input type="radio" name="testimonial" id="t-4" />
+      <input type="radio" name="testimonial" id="t-5" />
+      <div className="testimonials">
+        <label className="item" htmlFor="t-1">
+          <h1>1</h1>
+        </label>
+        <label className="item" htmlFor="t-2">
+          <h1>2</h1>
+        </label>
+        <label className="item" htmlFor="t-3">
+          <h1>3</h1>
+        </label>
+        <label className="item" htmlFor="t-4">
+          <h1>4</h1>
+        </label>
+        <label className="item" htmlFor="t-5">
+          <h1>5</h1>
+        </label>
+      </div>
+      <br />
+      <div className="dots">
+        <label htmlFor="t-1"></label>
+        <label htmlFor="t-2"></label>
+        <label htmlFor="t-3"></label>
+        <label htmlFor="t-4"></label>
+        <label htmlFor="t-5"></label>
+      </div>
+    </div>
+
 
             
             <div className="get-in-touch">
@@ -96,7 +113,7 @@ function Home() {
 </button>
             
             </div>
-            <footer>
+            {/* <footer>
                 <div className="foot-logo">
                     <img src={logo} alt="Logo" className="logo" />
                 </div>
@@ -114,9 +131,8 @@ function Home() {
                     <p>info@c4capture.com | +91 9599499028 |+91 9599499047  </p>
                 </div>
             </footer>
-            <p>Copyright © 2024 All rights reserved C4capture Production House Private Limited </p>
-
-
+            <p>Copyright © 2024 All rights reserved C4capture Production House Private Limited </p> */}
+          <Footer />
         </>
     );
 }

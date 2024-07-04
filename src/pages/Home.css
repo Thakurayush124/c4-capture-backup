@@ -1,0 +1,276 @@
+
+.vd {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.content {
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 250px;
+    width: 100%;
+    padding: 80px 1px; /* Adjust padding as needed */
+    margin-top: -100px; /* Adjust negative margin to overlap with .vd */
+    position: relative; /* Ensure relative positioning */
+    z-index: 2; /* Ensure it is above the video */
+}
+
+.content p {
+    font-size: 20px; /* Adjust font size as needed */
+    line-height: 1.6; /* Adjust line height for readability */
+    margin-bottom: 20px; /* Add space below paragraph */
+}
+
+.button {
+    background-color: #000000;
+    color: white;
+    border:2px solid #ffffff;
+    padding: 5px 20px;
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+.grid-container-1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.grid-item-1 {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.grid-item-1:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.service-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
+.slider{width: 100%}
+.slider input{display: none;}
+.testimonials{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	min-height: 350px;
+	perspective: 1000px;
+	overflow: hidden;
+}
+.testimonials .item{
+	width: 300px;
+	padding: 30px;
+	border-radius: 5px;
+	background-color: #21262d;
+	position: absolute;
+	border:3px solid white;
+	top: 0;
+	box-sizing: border-box;
+	text-align: center;
+	transition: transform 0.4s;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	user-select: none;
+	cursor: pointer;
+}
+.testimonials .item h1{font-size: 114px; color: white;}
+.dots{display: flex; justify-content: center;align-items: center;}
+.dots label{
+	height: 5px;
+	width: 5px;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: #413B52;
+	margin: 7px;
+	transition-duration: 0.2s;
+}
+#t-1:checked ~ .dots label[for="t-1"],
+#t-2:checked ~ .dots label[for="t-2"],
+#t-3:checked ~ .dots label[for="t-3"],
+#t-4:checked ~ .dots label[for="t-4"],
+#t-5:checked ~ .dots label[for="t-5"]{
+	transform: scale(2);
+	background-color: #fff;
+	box-shadow: 0px 0px 0px 3px #dddddd24;
+}
+
+#t-1:checked ~ .dots label[for="t-2"],
+#t-2:checked ~ .dots label[for="t-1"],
+#t-2:checked ~ .dots label[for="t-3"],
+#t-3:checked ~ .dots label[for="t-2"],
+#t-3:checked ~ .dots label[for="t-4"],
+#t-4:checked ~ .dots label[for="t-3"],
+#t-4:checked ~ .dots label[for="t-5"],
+#t-5:checked ~ .dots label[for="t-4"]{
+	transform: scale(1.5);
+}
+
+#t-1:checked ~ .testimonials label[for="t-3"],
+#t-2:checked ~ .testimonials label[for="t-4"],
+#t-3:checked ~ .testimonials label[for="t-5"],
+#t-4:checked ~ .testimonials label[for="t-1"],
+#t-5:checked ~ .testimonials label[for="t-2"]{
+	transform: translate3d(600px, 0, -180px) rotateY(-25deg);
+	z-index: 2;
+}
+
+#t-1:checked ~ .testimonials label[for="t-2"],
+#t-2:checked ~ .testimonials label[for="t-3"],
+#t-3:checked ~ .testimonials label[for="t-4"],
+#t-4:checked ~ .testimonials label[for="t-5"],
+#t-5:checked ~ .testimonials label[for="t-1"]{
+	transform: translate3d(300px, 0, -90px) rotateY(-15deg);
+	z-index: 3;
+}
+
+#t-2:checked ~ .testimonials label[for="t-1"],
+#t-3:checked ~ .testimonials label[for="t-2"],
+#t-4:checked ~ .testimonials label[for="t-3"],
+#t-5:checked ~ .testimonials label[for="t-4"],
+#t-1:checked ~ .testimonials label[for="t-5"]{
+	transform: translate3d(-300px, 0, -90px) rotateY(15deg);
+	z-index: 3;
+}
+
+#t-3:checked ~ .testimonials label[for="t-1"],
+#t-4:checked ~ .testimonials label[for="t-2"],
+#t-5:checked ~ .testimonials label[for="t-3"],
+#t-2:checked ~ .testimonials label[for="t-5"],
+#t-1:checked ~ .testimonials label[for="t-4"]{
+	transform: translate3d(-600px, 0, -180px) rotateY(25deg);
+	
+}
+
+#t-1:checked ~ .testimonials label[for="t-1"],
+#t-2:checked ~ .testimonials label[for="t-2"],
+#t-3:checked ~ .testimonials label[for="t-3"],
+#t-4:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-5"]{
+	
+	z-index: 4;
+}
+
+
+
+.get-in-touch{
+    padding: 5px 0 ;
+    background-color: #000000;
+    color: #ffffff;
+    width:80%;
+    height:100%;
+    padding:5% 0 ;
+    margin:0 10%;
+    text-align: center;
+}
+button {
+    background-color: #fff;
+    border: 1px solid #25D366;
+    padding: 25px ;
+    position: relative;
+    width: 8.5em;
+    height: 2em;
+    transition: 0.5s;
+    font-size: 17px;
+    border-radius: 0.4em;
+    
+
+  }
+  
+  button p {
+    position: absolute;
+  
+    top: 0.4em;
+    left: 1.5em;
+    right: 1.5em;
+    margin: 0;
+    padding: 0;
+    transition: .5s;
+    color: #25D366;
+  }
+  
+  button svg {
+    position: absolute;
+    top: 0.45em;
+    right: 0.5em;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: 0.5s;
+    height: 1em;
+    fill: #fff
+  }
+  
+  button:hover p {
+    left: 0.5em;
+    color: #fff
+  }
+  
+  button:hover svg {
+    opacity: 1;
+  }
+  
+  button:hover {
+    background-color: #25D366;
+  }
+  
+
+
+/* custom classes */
+.heading{
+    font-size: 4.9rem;
+    font-weight: 600;
+    color: #000000;
+    text-align: center;
+}
+.sub-heading{
+    font-size: 3.5rem;
+    font-weight: 500;
+    color: #000000;
+    text-align: center;
+}
+
+.sub-sub-heading{
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: #000000;
+    text-align: center;
+}
+
+.para-mini-txt{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.6; 
+    margin-bottom: 1em; 
+    text-align: justify; 
+}
