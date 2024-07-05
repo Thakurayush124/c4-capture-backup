@@ -2,13 +2,17 @@ import React from 'react'
 import Nav from "../component/Nav.js";
 import WhatsappFloat from '../component/flt_wtp.js';
 
- function about() {
+import Footer from '../component/footer.js';
+
+function about() {
   return (
     <>
-    <Nav />
-<WhatsappFloat />
+      <Nav />
+      about me mother fucker 💪
+      <WhatsappFloat />
+      <Footer />
     </>
-  
+
   )
 };
 
