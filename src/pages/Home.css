@@ -33,7 +33,7 @@
     margin-bottom: 20px; /* Add space below paragraph */
 }
 
-.button {
+..get-in-touch button {
     background-color: #000000;
     color: white;
     border:2px solid #ffffff;
@@ -44,7 +44,7 @@
     transition: background-color 0.3s ease;
 }
 
-.button:hover {
+..get-in-touch button:hover {
     background-color: #555;
 }
 
@@ -191,14 +191,18 @@
     padding:5% 0 ;
     margin:0 10%;
     text-align: center;
+    display: flex;
+    align-items:  center;
+    flex-direction: column ;
+    row-gap: 10px;
 }
-button {
+.get-in-touch button {
     background-color: #fff;
     border: 1px solid #25D366;
     padding: 25px ;
     position: relative;
-    width: 8.5em;
-    height: 2em;
+    width: 10em;
+    height : 4em;
     transition: 0.5s;
     font-size: 17px;
     border-radius: 0.4em;
@@ -206,7 +210,12 @@ button {
 
   }
   
-  button p {
+  .line{
+    height: 1px;
+    width: 40%;
+    background-color: #25D366;
+  }
+  .get-in-touch button p {
     position: absolute;
   
     top: 0.4em;
@@ -218,7 +227,7 @@ button {
     color: #25D366;
   }
   
-  button svg {
+  .get-in-touch button svg {
     position: absolute;
     top: 0.45em;
     right: 0.5em;
@@ -230,16 +239,16 @@ button {
     fill: #fff
   }
   
-  button:hover p {
+  .get-in-touch button:hover p {
     left: 0.5em;
     color: #fff
   }
   
-  button:hover svg {
-    opacity: 1;
+  .get-in-touch button:hover svg {
+    opacity: 12131;
   }
   
-  button:hover {
+  .get-in-touch button:hover {
     background-color: #25D366;
   }
   

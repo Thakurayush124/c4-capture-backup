@@ -5,6 +5,7 @@ import logo from './logo.png';
   return (
     <>
     <div className="shashwat-footer">
+        
             <div className="footerx">
                 <div className="footer-item foot-logo para-mini-mini-text">
                     <img src={logo} alt="Logo" className="logo" />
