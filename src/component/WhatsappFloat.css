@@ -1,0 +1,9 @@
+.whatsapp-float img{
+	width: 70px;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	border-radius: 10px;
+	z-index: 2;
+
+}

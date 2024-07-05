@@ -3,6 +3,7 @@ import './Home.css'; // Ensure the correct path to the CSS file
 import video from './banni.mp4';
 import Nav from '../component/Nav.js';
 import Footer from '../component/footer.js';
+import WhatsappFloat from '../component/flt_wtp.js';
 
 
 const services = [
@@ -49,6 +50,7 @@ function Home() {
     };
     return (
         <>
+        <WhatsappFloat />
         <Nav />
             <div className="vd">
                 <video autoPlay loop muted src={video} className="video-element"></video>
@@ -114,26 +116,9 @@ function Home() {
 </button>
             
             </div>
-            {/* <footer>
-                <div className="foot-logo">
-                    <img src={logo} alt="Logo" className="logo" />
-                </div>
-                <div className="grid-container">
-                    <a href="#link1" className="grid-item">HOME</a>
-                    <a href="#link2" className="grid-item"> BLOG</a>
-                    <a href="#link3" className="grid-item">FAQ</a>
-                    <a href="#link4" className="grid-item">ABOUT</a>
-                    <a href="#link5" className="grid-item">SERVICES</a>
-                    <a href="#link6" className="grid-item">CONTACT</a>
-                </div>
-                <div className="foot">
-                    <p >Company registered address :- H. No. 24 Rajpur Khurd, Chhattarpur, Delhi 110068</p>
-                    <p>Branch office :- Lane No 1 - Dwarika Puram, Mothrowala Dehradun - 248001</p>
-                    <p>info@c4capture.com | +91 9599499028 |+91 9599499047  </p>
-                </div>
-            </footer>
-            <p>Copyright © 2024 All rights reserved C4capture Production House Private Limited </p> */}
+            
           <Footer />
+          
         </>
     );
 }
