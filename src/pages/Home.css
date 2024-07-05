@@ -283,3 +283,13 @@
     margin-bottom: 1em; 
     text-align: justify; 
 }
+.bi-whatsapp{
+    font-size: 2rem;
+}
+.whatts-butt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px
+}
