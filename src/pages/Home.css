@@ -33,7 +33,7 @@
     margin-bottom: 20px; /* Add space below paragraph */
 }
 
-..get-in-touch button {
+.get-in-touch button {
     background-color: #000000;
     color: white;
     border:2px solid #ffffff;
@@ -44,8 +44,43 @@
     transition: background-color 0.3s ease;
 }
 
-..get-in-touch button:hover {
+.get-in-touch button:hover {
     background-color: #555;
+}
+
+.content {
+    max-width: 100%; /* Adjust based on your layout */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; /* Centers the button and text */
+}
+
+.but {
+    background-color: #000000;
+    color: white;
+    border: 2px solid #ffffff;
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    font-size: 16px;
+    cursor: pointer;
+    width: auto; /* Allows the button to adjust its width based on content */
+    height: auto; /* Allows the button to adjust its height based on content */
+    transition: background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* Optional: Media query for larger screens */
+@media (min-width: 768px) {
+    .button {
+        font-size: 18px; /* Adjust font size for larger screens */
+        padding: 12px 24px;
+    }
+}
+
+/* Optional: Media query for smaller screens */
+@media (max-width: 480px) {
+    .button {
+        font-size: 14px; /* Adjust font size for smaller screens */
+        padding: 8px 16px;
+    }
 }
 
 .grid-container-1 {

@@ -4,9 +4,6 @@ import Nav from "../component/Nav.js";
 import Footer from "../component/footer.js";
 import backimg from "./contact-bg.jpg";
 import "./contact.css";
-// import dotenv from 'dotenv';
-
-// dotenv.config();
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -26,24 +23,23 @@ const Contact = () => {
       message,
     };
 
-    emailjs.send(
-      "service_s6bcwdh",//process.env.REACT_APP_EMAILJS_SERVICE,
-      "template_qtj1imu",// process.env.REACT_APP_EMAILJS_TEMPLATE,
-      templateParams,
-      "FvSUaxJ6posecdqyj" // process.env.REACT_APP_EMAILJS_USER_ID
-    )
-    .then((response) => {
-      console.log('Email sent successfully:', response.status, response.text);
-      // Reset form fields
-      setName('');
-      setEmail('');
-      setTelephone('');
-      setSubject('');
-      setMessage('');
-    })
-    .catch((error) => {
-      console.error('Error sending email:', error);
-    });
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE;
+    const userId = process.env.REACT_APP_EMAILJS_USER_ID;
+
+    emailjs.send(serviceId, templateId, templateParams, userId)
+      .then((response) => {
+        console.log('Email sent successfully:', response.status, response.text);
+        // Reset form fields
+        setName('');
+        setEmail('');
+        setTelephone('');
+        setSubject('');
+        setMessage('');
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+      });
   };
 
   return (

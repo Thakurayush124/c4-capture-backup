@@ -6,6 +6,7 @@ import Footer from '../component/footer.js';
 import WhatsappFloat from '../component/flt_wtp.js';
 
 
+
 const services = [
   "WEDDING SHOOTS",
   "PRE-WEDDING",
@@ -57,7 +58,7 @@ function Home() {
       </div>
       <div className="content">
         <p>We are the pioneers of modern wedding photography and filmmaking in India and our award-winning team documents stories of love from all around the world since 2014. Founded by Anupam Maurya & Soumi Goswami, KnotsbyAMP is a collective of fine art photographers and filmmakers that has covered a rich kaleidoscope of Indian Weddings and is winner of multiple Wedding Photographer of the Year titles and international recognition.</p>
-        <button className="button">Get in touch</button>
+        <button className="but">Get in touch</button>
       </div>
       <div className="services">
         <h2>Our Services</h2>
