@@ -8,7 +8,8 @@ function services() {
   return (
     <>
       <Nav />
-      This aint escort sevices bitches
+      {/* This aint escort sevices bitches */}
+      <h1>This is services section</h1>
       <WhatsappFloat />
       <Footer />
     </>

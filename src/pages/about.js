@@ -8,7 +8,8 @@ function about() {
   return (
     <>
       <Nav />
-      about me mother fucker 💪
+      {/* about me mother fucker 💪 */}
+      <h1>This is about me section</h1>
       <WhatsappFloat />
       <Footer />
     </>

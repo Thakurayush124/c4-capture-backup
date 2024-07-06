@@ -30,7 +30,6 @@ const Contact = () => {
     emailjs.send(serviceId, templateId, templateParams, userId)
       .then((response) => {
         console.log('Email sent successfully:', response.status, response.text);
-        // Reset form fields
         setName('');
         setEmail('');
         setTelephone('');
