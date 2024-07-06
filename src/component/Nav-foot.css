@@ -226,7 +226,13 @@ body {
     align-items: center;
     transition: flex-direction 0.5s ease;
 }
+.navbar-item:hover {
+    background-color: #f1f1f1;
+  }
 
+  .dropdown{
+    background-color: rgb(89, 65, 33);
+  }
 @media (max-width: 560px) {
     .navbar {
         flex-direction: column;
