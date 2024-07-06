@@ -52,10 +52,10 @@ const Contact = () => {
         setMessage('');
         setShowSuccessMessage(true);
 
-        // Hide success message and show form after 2 seconds
-        setTimeout(() => {
-          setShowSuccessMessage(false);
-        }, 2000);
+        // // Hide success message and show form after 2 seconds
+        // setTimeout(() => {
+        //   setShowSuccessMessage(false);
+        // }, 2000);
       })
       .catch((error) => {
         console.error('Error sending email:', error);
