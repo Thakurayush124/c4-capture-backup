@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import emailjs from 'emailjs-com';
 import Nav from "../component/Nav.js";
 import Footer from "../component/footer.js";
 import backimg from "./contact-bg.jpg";
 import "./contact.css";
+// import dotenv from 'dotenv';
+
+// dotenv.config();
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -13,13 +17,33 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here, you can use the form data in `name`, `email`, `telephone`, `subject`, and `message` states
-    console.log("Form submitted:", { name, email, telephone, subject, message });
-    setName('');
-    setEmail('');
-    setTelephone('');
-    setSubject('');
-    setMessage('');
+
+    const templateParams = {
+      name,
+      email,
+      telephone,
+      subject,
+      message,
+    };
+
+    emailjs.send(
+      "service_s6bcwdh",//process.env.REACT_APP_EMAILJS_SERVICE,
+      "template_qtj1imu",// process.env.REACT_APP_EMAILJS_TEMPLATE,
+      templateParams,
+      "FvSUaxJ6posecdqyj" // process.env.REACT_APP_EMAILJS_USER_ID
+    )
+    .then((response) => {
+      console.log('Email sent successfully:', response.status, response.text);
+      // Reset form fields
+      setName('');
+      setEmail('');
+      setTelephone('');
+      setSubject('');
+      setMessage('');
+    })
+    .catch((error) => {
+      console.error('Error sending email:', error);
+    });
   };
 
   return (
@@ -38,9 +62,8 @@ const Contact = () => {
             {/* Your SVG code here */}
           </svg>
         </div>
-        <form  id="contact_form" onSubmit={handleSubmit}>
+        <form id="contact_form" onSubmit={handleSubmit}>
           <div className="name">
-            
             <input
               type="text"
               placeholder="My name is"
@@ -52,7 +75,6 @@ const Contact = () => {
             />
           </div>
           <div className="email">
-          
             <input
               type="email"
               placeholder="My e-mail is"
@@ -64,7 +86,6 @@ const Contact = () => {
             />
           </div>
           <div className="telephone">
-        
             <input
               type="text"
               placeholder="My number is"
@@ -76,7 +97,6 @@ const Contact = () => {
             />
           </div>
           <div className="subject">
-           
             <select
               name="subject"
               id="subject_input"
