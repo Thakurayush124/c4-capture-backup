@@ -4,6 +4,7 @@ import Nav from "../component/Nav.js";
 import Footer from "../component/footer.js";
 import backimg from "./contact-bg.jpg";
 import "./contact.css";
+import donr from "./closed-book.gif";
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -56,6 +57,7 @@ const Contact = () => {
         // setTimeout(() => {
         //   setShowSuccessMessage(false);
         // }, 2000);
+        document.getElementById("contact_form").style.display = "none";
       })
       .catch((error) => {
         console.error('Error sending email:', error);
@@ -72,6 +74,7 @@ const Contact = () => {
 
       {showSuccessMessage && (
         <div className="success-message">
+          <img src={donr} alt=""/>
           Form submitted successfully!
         </div>
       )}

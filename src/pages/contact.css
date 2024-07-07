@@ -1,36 +1,4 @@
-.image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 650px;
-    overflow: hidden;
-    background-color: #f0f0f0; /* You can change this to match your design */
-    position: relative; /* Ensure the image and text are positioned relative to this container */
-  }
-  
-  .image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the entire container */
-    display: block;
-  }
-  
-  .centered-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-48%, 160%);
-    color: white; /* Change to desired text color */
-    font-size: 24px; /* Change to desired font size */
-    text-align: center;
-    padding: 10px; /* Optional: Padding for better readability */
-    border-radius: 5px; /* Optional: Rounded corners */
-  }
-
-  @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
-
+/* Common styles for the form and body */
 body {
   background: #F2F3EB;
 }
@@ -57,6 +25,7 @@ textarea {
   overflow: auto;
 }
 
+/* Container styling */
 #container {
   border: solid 3px #474544;
   max-width: 768px;
@@ -98,53 +67,43 @@ h1 {
 }
 
 .email {
-	float: right;
-	width: 45%;
+  float: right;
+  width: 45%;
 }
 
 input[type='text'], [type='email'], select, textarea {
-	background: none;
+  background: none;
   border: none;
-	border-bottom: solid 2px #474544;
-	color: #474544;
-	font-size: 1.000em;
+  border-bottom: solid 2px #474544;
+  color: #474544;
+  font-size: 1em;
   font-weight: 400;
   letter-spacing: 1px;
-	margin: 0em 0 1.875em 0;
-	padding: 0 0 0.875em 0;
-
-	width: 100%;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	-ms-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
+  margin: 0 0 1.875em 0;
+  padding: 0 0 0.875em 0;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s;
 }
 
 input[type='text']:focus, [type='email']:focus, textarea:focus {
-	outline: none;
-	padding: 0 0 0.875em 0;
+  outline: none;
+  padding: 0 0 0.875em 0;
 }
 
 .message {
-	float: none;
+  float: none;
 }
 
 .name {
-	float: left;
-	width: 45%;
+  float: left;
+  width: 45%;
 }
 
 select {
   background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png') no-repeat right;
   outline: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 select::-ms-expand {
@@ -160,26 +119,27 @@ select::-ms-expand {
 }
 
 textarea {
-	line-height: 150%;
-	height: 150px;
-	resize: none;
+  line-height: 150%;
+  height: 150px;
+  resize: none;
   width: 100%;
 }
 
+/* Placeholder styling */
 ::-webkit-input-placeholder {
-	color: #474544;
+  color: #474544;
 }
 
-:-moz-placeholder { 
-	color: #474544;
-	opacity: 1;
+:-moz-placeholder {
+  color: #474544;
+  opacity: 1;
 }
-
 
 :-ms-input-placeholder {
-	color: #474544;
+  color: #474544;
 }
 
+/* Button styling */
 #form_button {
   background: none;
   border: solid 2px #474544;
@@ -192,11 +152,7 @@ textarea {
   outline: none;
   padding: 20px 35px;
   text-transform: uppercase;
-  -webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	-ms-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 #form_button:hover {
@@ -204,6 +160,29 @@ textarea {
   color: #F2F3EB;
 }
 
+/* Success message styling */
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color:#F2F3EB; /* Light green background */
+  color: #3c763d; /* Dark green text */
+  padding: 5%;
+ 
+  font-size: 2.2em;
+
+  margin-top: 20px;
+
+}
+
+.success-message img{
+  
+  background: none;
+  width: 100px;
+  height: 100px;
+}
+/* Responsive design */
 @media screen and (max-width: 768px) {
   #container {
     margin: 20px auto;
@@ -243,3 +222,37 @@ textarea {
     font-size: 0.875em;
   }
 }
+
+/* Image and centered text styling */
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 650px;
+  overflow: hidden;
+  background-color: #f0f0f0; /* You can change this to match your design */
+  position: relative; /* Ensure the image and text are positioned relative to this container */
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire container */
+  display: block;
+}
+
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, 160%);
+  color: white; /* Change to desired text color */
+  font-size: 24px; /* Change to desired font size */
+  text-align: center;
+  padding: 10px; /* Optional: Padding for better readability */
+  border-radius: 5px; /* Optional: Rounded corners */
+}
+
+/* Importing Google Font */
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);

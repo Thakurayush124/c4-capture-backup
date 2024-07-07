@@ -18,6 +18,7 @@ function Nav() {
                         <li className="navbar-item"><Link to="/about">About</Link></li>
                         <li className="navbar-item"><Link to="/services">Services</Link></li>
                         <li className="navbar-item"><Link to="/contact">Contact</Link></li>
+                        <li className="navbar-item"><Link to="/part">Part</Link></li>
                     </ul>
                 </div>
             </nav>
