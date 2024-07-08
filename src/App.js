@@ -6,6 +6,7 @@ import About from './pages/about';
 import Services from './pages/services';
 import Layout from "./pages/Layout";
 import './App.css'
+
 function App() {
   return (
     <div className="App">
@@ -15,7 +16,6 @@ function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/services" element={<Services/>} />
           <Route path="/contact" element={<Contact />} />
-          
         </Route>
       </Routes>
     </div>

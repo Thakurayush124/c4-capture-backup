@@ -1,4 +1,3 @@
-// LogoTilt.jsx
 import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useLoader, useThree, useFrame } from '@react-three/fiber';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
@@ -6,9 +5,9 @@ import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 import { PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
 import Nav from './Nav.js';
-import sampleVideo from '../pages/banni.mp4';
+import sampleVideo from '../pages/banni.mp4'; // import your video file
 
-function Model({ mouseX, mouseY }) {
+function Model({ isHovering, mouseX, mouseY }) {
   const objRef = useRef();
   const { scene } = useThree();
   const materials = useLoader(MTLLoader, 'logo.mtl');
@@ -22,17 +21,18 @@ function Model({ mouseX, mouseY }) {
       const box = new THREE.Box3().setFromObject(obj);
       const center = box.getCenter(new THREE.Vector3());
       obj.position.sub(center);
+      
       obj.rotation.x = 1.57;
     }
   }, [obj, scene]);
 
   useFrame(() => {
     if (objRef.current) {
-      const maxTilt = THREE.MathUtils.degToRad(26); // 26 degrees in radians
-      const targetRotationY = THREE.MathUtils.clamp(mouseX * maxTilt, -maxTilt, maxTilt);
-      const targetRotationX = 1.57 + THREE.MathUtils.clamp(-mouseY * maxTilt, -maxTilt, maxTilt);
+      const maxTilt = 0.523; // 30 degrees in radians
+      const targetRotationY = isHovering ? THREE.MathUtils.clamp(mouseX * maxTilt, -maxTilt, maxTilt) : 0;
+      const targetRotationX = isHovering ? 1.57 + THREE.MathUtils.clamp(-mouseY * maxTilt, -maxTilt, maxTilt) : 1.57;
 
-      const transitionSpeed = 0.1;
+      const transitionSpeed = isHovering ? 0.1 : 0.05;
 
       objRef.current.rotation.y += (targetRotationY - objRef.current.rotation.y) * transitionSpeed;
       objRef.current.rotation.x += (targetRotationX - objRef.current.rotation.x) * transitionSpeed;
@@ -41,41 +41,38 @@ function Model({ mouseX, mouseY }) {
 
   return (
     <primitive 
-      object={obj}
-      ref={objRef}
-      scale={0.0035}
+      object={obj} 
+      ref={objRef} 
+      scale={0.002} 
     />
   );
 }
 
 const LogoTilt = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
   const divRef = useRef();
 
   const handleMouseMove = (event) => {
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
+    if (!divRef.current) return;
+    const rect = divRef.current.getBoundingClientRect();
     setMousePosition({
-      x: (event.clientX / windowWidth) * 2 - 1,
-      y: -(event.clientY / windowHeight) * 2 + 1
+      x: ((event.clientX - rect.left) / rect.width) * 2 - 1,
+      y: -((event.clientY - rect.top) / rect.height) * 2 + 1
     });
   };
 
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
 
   return (
-    <div className='tilt' ref={divRef} style={{
-      width: '100%',
-      height: '100vh',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
-     <video 
+    <div className="video-container" style={{ position: 'relative', width: '100%', height: '100vh' }}>
+      <video 
         src={sampleVideo} 
         autoPlay 
         loop 
@@ -86,26 +83,28 @@ const LogoTilt = () => {
           objectFit: 'cover' 
         }} 
       />
-        <source src="../pages/banni.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      <Nav />
-      <div className='tilt-container' style={{ 
-        width: '100%', 
-        height: 'calc(100% - 100px)', 
-        position: 'absolute',
-        top: '100px', // Adjust based on your navbar height
-        left: 0,
-      }}>
-        <Canvas style={{ width: '100%', height: '70%' }}>
-          <PerspectiveCamera makeDefault position={[0, -1, 6]} />
+      <div 
+        className="tilt-container" 
+        style={{ 
+          position: 'absolute', 
+          top: 0, 
+          left: 0, 
+          width: '100%', 
+          height: '100%' 
+        }}
+        ref={divRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <Nav />
+        <Canvas className="tilt-container">
+          <PerspectiveCamera makeDefault position={[0, 0, 6]} />
           <ambientLight intensity={0.5} />
           <directionalLight position={[10, 10, 5]} intensity={1} />
-          <Model mouseX={mousePosition.x} mouseY={mousePosition.y} />
+          <Model isHovering={isHovering} mouseX={mousePosition.x} mouseY={mousePosition.y} />
         </Canvas>
       </div>
-      
-
-      
     </div>
   );
 };
