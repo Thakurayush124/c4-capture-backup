@@ -32,7 +32,7 @@ function Model({ isHovering, mouseX, mouseY }) {
       const targetRotationY = isHovering ? THREE.MathUtils.clamp(mouseX * maxTilt, -maxTilt, maxTilt) : 0;
       const targetRotationX = isHovering ? 1.57 + THREE.MathUtils.clamp(-mouseY * maxTilt, -maxTilt, maxTilt) : 1.57;
 
-      const transitionSpeed = isHovering ? 0.1 : 0.05;
+      const transitionSpeed = isHovering ? 0.1 : 0.02; // Adjust transition speed here
 
       objRef.current.rotation.y += (targetRotationY - objRef.current.rotation.y) * transitionSpeed;
       objRef.current.rotation.x += (targetRotationX - objRef.current.rotation.x) * transitionSpeed;
