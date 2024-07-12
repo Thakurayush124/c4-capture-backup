@@ -54,7 +54,7 @@ function Home() {
       <WhatsappFloat />
       <Nav />
       <div className="vd">
-        <LogoTilt url="../component/logo.glb" />
+        <LogoTilt />
         {/* <video autoPlay loop muted src={video} className="video-element">
           <LogoTilt url="../component/logo.glb" />
         </video> */}
