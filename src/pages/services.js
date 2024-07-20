@@ -3,10 +3,13 @@ import WhatsappFloat from '../component/flt_wtp.js';
 import LogoTilt from '../component/LogoTilt1.js';
 import Footer from '../component/footer.js';
 import Nav from '../component/Nav.js';
+// import ThreeDViewer from "../component/ThreeDViewer.js"
 function services() {
   return (
+
     <>
-      <LogoTilt url="../component/logo.glb" />
+      <Nav/>
+      <LogoTilt  />
       <WhatsappFloat />
       <Footer />
     </>

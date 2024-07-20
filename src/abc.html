@@ -1,99 +1,72 @@
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<style>
-    .circle {
-        height: 24px;
-        width: 24px;
-        border-radius: 24px;
-        background-color: black;
-        position: fixed; 
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        z-index: 99999999; /* so that it stays on top of all other elements */
-      }
-</style>
-<script>
-    const coords = { x: 0, y: 0 };
-const circles = document.querySelectorAll(".circle");
+<h2>Hi 👋, I'm Shashwat Darshan</h2>
 
-const colors = [
-  "#ffb56b",
-  "#fdaf69",
-  "#f89d63",
-  "#f59761",
-  "#ef865e",
-  "#ec805d",
-  "#e36e5c",
-  "#df685c",
-  "#d5585c",
-  "#d1525c",
-  "#c5415d",
-  "#c03b5d",
-  "#b22c5e",
-  "#ac265e",
-  "#9c155f",
-  "#950f5f",
-  "#830060",
-  "#7c0060",
-  "#680060",
-  "#60005f",
-  "#48005f",
-  "#3d005e"
-];
+- I am interested in **Backend web development** and **Artificial Intelligence**
+- I am currently a student with major in CS
+- You can find my latest resume [here](https://drive.google.com/file/d/1XHnf_ZEvG6s85ciyphafEG2_d3rr8ePY/view?usp=drive_link)
+- You can reach me via **[Linkedin](https://www.linkedin.com/in/shashwat-darshan-b183b7260/)**
 
-circles.forEach(function (circle, index) {
-  circle.x = 0;
-  circle.y = 0;
-  circle.style.backgroundColor = colors[index % colors.length];
-});
+<h3 align="left">Current skills</h3>
 
-window.addEventListener("mousemove", function(e){
-  coords.x = e.clientX;
-  coords.y = e.clientY;
-  
-});
+<h3>Languages</h3>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <div style="flex: 0 0 45%;">
+        <ul style="list-style-type: none;">
+            <li>C</li>
+            <li>C++</li>
+            <li>Python</li>
+            <li>Java</li>
+        </ul>
+    </div>
+    <div style="flex: 0 0 45%;">
+        <ul style="list-style-type: none;">
+            <li>Rlang</li>
+            <li>TypeScript</li>
+        </ul>
+    </div>
+</div>
 
-function animateCircles() {
-  
-  let x = coords.x;
-  let y = coords.y;
-  
-  circles.forEach(function (circle, index) {
-    circle.style.left = x - 12 + "px";
-    circle.style.top = y - 12 + "px";
-    
-    circle.style.scale = (circles.length - index) / circles.length;
-    
-    circle.x = x;
-    circle.y = y;
+<h3>Artificial Intelligence</h3>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <div style="flex: 0 0 45%;">
+        <ul style="list-style-type: none;">
+            <li>Python</li>
+            <li>TensorFlow</li>
+            <li>Keras</li>
+            <li>Scikit-Learn</li>
+        </ul>
+    </div>
+    <div style="flex: 0 0 45%;">
+        <ul style="list-style-type: none;">
+            <li>Pandas</li>
+            <li>Matplotlib</li>
+            <li>Seaborn</li>
+            <li>NLTK</li>
+        </ul>
+    </div>
+    <div style="flex: 0 0 45%;">
+        <ul style="list-style-type: none;">
+            <li>Spacy</li>
+            <li>Supervised Learning</li>
+            <li>Unsupervised Learning</li>
+            <li>Regression</li>
+        </ul>
+    </div>
+    <div style="flex: 0 0 45%;">
+        <ul style="list-style-type: none;">
+            <li>Classification</li>
+            <li>Clustering</li>
+            <li>Neural Networks</li>
+            <li>Flask</li>
+        </ul>
+    </div>
+</div>
 
-    const nextCircle = circles[index + 1] || circles[0];
-    x += (nextCircle.x - x) * 0.3;
-    y += (nextCircle.y - y) * 0.3;
-  });
- 
-  requestAnimationFrame(animateCircles);
-}
-
-animateCircles();
-
-</script>
+<h3>Database</h3>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <div style="flex: 0 0 45%;">
+        <ul style="list-style-type: none;">
+            <li>SQL</li>
+            <li>MongoDb</li>
+        </ul>
+    </div>
+</div>
