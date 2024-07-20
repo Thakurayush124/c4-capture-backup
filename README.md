@@ -8,18 +8,14 @@ Welcome to the Event Management Services Website project! This repository is ded
 - Travelling Shoot
 - And more!
 
-## Report on repo
+## Progress Update
 
-### Home Components
-- **Status**: In Progress
+We are actively working on this project, and here's the current status of our pages:
 
-### Contact Us / Professional Contact Us
-- **Status**: Done
-
-### Services page : design not confirmed
-- **Status**: not started yet
-
-
+1. **Home**: Halfway complete
+2. **Contact Us**: Complete
+3. **About**: Not started yet, but we have a general idea of what to include
+4. **Services**: We are still brainstorming how to best represent this page
 
 ## Getting Started
 
