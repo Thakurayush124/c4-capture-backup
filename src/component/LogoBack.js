@@ -13,9 +13,16 @@ const LogoBack = () => {
     const $slider = $(sliderRef.current);
     const $sliderRight = $(rightSliderRef.current);
     const $textSlider = $(textSliderRef.current);
+
     const maxItems = $('.item', $slider).length;
     let dragging = false;
     let tracking, rightTracking;
+
+    // Clone and reverse right slider items
+    const $rightSliderContainer = $sliderRight.closest('.slideshow-right');
+    const rightItems = $('.item', $rightSliderContainer).toArray().reverse();
+    $sliderRight.empty();
+    rightItems.forEach(item => $sliderRight.append(item));
 
     $slider.slick({
       vertical: true,
@@ -95,7 +102,7 @@ const LogoBack = () => {
 
   return (
     <div className="split-slideshow">
-      <div className="slideshow">
+      <div className="slideshow slideshow-left">
         <div className="slider" ref={sliderRef}>
           <div className="item">
             <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-2.jpg" alt="Canyon 2" />
@@ -133,6 +140,9 @@ const LogoBack = () => {
         <div className="item">Erosion</div>
         <div className="item">Shape</div>
       </div>
+      <a className="the-most" target="_blank" href="https://codepen.io/2017/popular/pens/10/" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/themost-2017.png" alt="The Most" />
+      </a>
     </div>
   );
 };
