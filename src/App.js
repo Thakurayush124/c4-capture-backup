@@ -7,10 +7,10 @@ import About from './pages/about';
 import Services from './pages/services';
 import Layout from "./pages/Layout";
 import './App.css'
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import $ from 'jquery';
 import 'slick-carousel';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 // Ensure jQuery is available globally
 window.jQuery = $;
