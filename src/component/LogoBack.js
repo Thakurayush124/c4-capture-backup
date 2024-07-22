@@ -47,29 +47,7 @@ const LogoBack = () => {
           $('.slideshow-right .slider', $splitSlideshow).slick('slickGoTo', maxItems - 1 - nextSlide);
           $('.slideshow-text', $splitSlideshow).slick('slickGoTo', nextSlide);
         }
-      }).on("mousewheel", function(event) {
-        event.preventDefault();
-        if (event.deltaX > 0 || event.deltaY < 0) {
-          $(this).slick('slickNext');
-        } else if (event.deltaX < 0 || event.deltaY > 0) {
-          $(this).slick('slickPrev');
-        }
-      }).on('mousedown touchstart', function(){
-        dragging = true;
-        tracking = $('.slick-track', $slider).css('transform');
-        tracking = parseInt(tracking.split(',')[5]);
-        rightTracking = $('.slideshow-right .slick-track', $splitSlideshow).css('transform');
-        rightTracking = parseInt(rightTracking.split(',')[5]);
-      }).on('mousemove touchmove', function(){
-        if (dragging) {
-          const newTracking = $('.slideshow-left .slick-track', $splitSlideshow).css('transform');
-          const newTrackingNum = parseInt(newTracking.split(',')[5]);
-          const diffTracking = newTrackingNum - tracking;
-          $('.slideshow-right .slick-track', $splitSlideshow).css({'transform': 'matrix(1, 0, 0, 1, 0, ' + (rightTracking - diffTracking) + ')'});
-        }
-      }).on('mouseleave touchend mouseup', function(){
-        dragging = false;
-      });
+      })
 
       $('.slideshow-right .slider', $splitSlideshow).slick({
         swipe: false,
