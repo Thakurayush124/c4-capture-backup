@@ -1,6 +1,7 @@
 /* Common styles for the form and body */
 body {
-  background: #F2F3EB;
+  position: relative;
+  z-index: 1; 
 }
 
 button {

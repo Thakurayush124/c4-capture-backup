@@ -1,5 +1,5 @@
 import React from 'react'
-import './Nav-foot.css'; 
+import './footer.css'; 
 import logo from './logo.png';
  function footer() {
   return (
