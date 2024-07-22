@@ -6,6 +6,8 @@ import Footer from '../component/footer.js';
 import WhatsappFloat from '../component/flt_wtp.js';
 import LogoTilt from "../component/LogoTilt.js";
 
+import LogoBack from '../component/LogoBack.js';
+
 
 const services = [
   "WEDDING SHOOTS",
@@ -53,11 +55,11 @@ function Home() {
     <>
       <WhatsappFloat />
       <Nav />
-      <div className="vd">
-        <LogoTilt />
-        {/* <video autoPlay loop muted src={video} className="video-element">
-          <LogoTilt url="../component/logo.glb" />
-        </video> */}
+      <div className="main-container">
+        <LogoBack />
+        <div className="logo-tilt-wrapper">
+          <LogoTilt />
+        </div>
       </div>
       <div className="content">
         <p>We are the pioneers of modern wedding photography and filmmaking in India and our award-winning team documents stories of love from all around the world since 2014. Founded by Anupam Maurya & Soumi Goswami, KnotsbyAMP is a collective of fine art photographers and filmmakers that has covered a rich kaleidoscope of Indian Weddings and is winner of multiple Wedding Photographer of the Year titles and international recognition.</p>

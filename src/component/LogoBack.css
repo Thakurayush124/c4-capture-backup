@@ -93,6 +93,21 @@
     text-align: center;
 }
 
+.main-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .logo-tilt-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+
 .slideshow .slick-dots li button:before {
     content: '';
     background: #fff;
@@ -172,11 +187,11 @@
   
   .slideshow-text {
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
-    font-size: 80px;
+    font-size: 60px;
     width: 100%;
     text-align: center;
     color: #fff;

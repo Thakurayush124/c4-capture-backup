@@ -1,4 +1,3 @@
-//Logog
 import React, { useEffect, useRef } from 'react';
 import $ from 'jquery';
 import 'slick-carousel/slick/slick.css';
@@ -47,7 +46,7 @@ const LogoBack = () => {
           $('.slideshow-right .slider', $splitSlideshow).slick('slickGoTo', maxItems - 1 - nextSlide);
           $('.slideshow-text', $splitSlideshow).slick('slickGoTo', nextSlide);
         }
-      })
+      });
 
       $('.slideshow-right .slider', $splitSlideshow).slick({
         swipe: false,
@@ -102,36 +101,32 @@ const LogoBack = () => {
   }, []);
 
   return (
-
     <div className="logo-back-container">
-
-    <div className="split-slideshow" ref={splitSlideshowRef}>
-      <div className="slideshow">
-        <div className="slider">
-          <div className="item">
-            <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-2.jpg" alt="Canyon 2" />
-          </div>
-          <div className="item">
-            <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-3.jpg" alt="Canyon 3" />
-          </div>
-          <div className="item">
-            <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-4.jpg" alt="Canyon 4" />
-          </div>
-          <div className="item">
-            <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg" alt="Canyon 1" />
+      <div className="split-slideshow" ref={splitSlideshowRef}>
+        <div className="slideshow">
+          <div className="slider">
+            <div className="item">
+              <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-2.jpg" alt="Canyon 2" />
+            </div>
+            <div className="item">
+              <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-3.jpg" alt="Canyon 3" />
+            </div>
+            <div className="item">
+              <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-4.jpg" alt="Canyon 4" />
+            </div>
+            <div className="item">
+              <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg" alt="Canyon 1" />
+            </div>
           </div>
         </div>
+        <div className="slideshow-text">
+          <div className="item">Canyon</div>
+          <div className="item">Desert</div>
+          <div className="item">Erosion</div>
+          <div className="item">Shape</div>
+        </div>
       </div>
-      <div className="slideshow-text">
-        <div className="item">Canyon</div>
-        <div className="item">Desert</div>
-        <div className="item">Erosion</div>
-        <div className="item">Shape</div>
-      </div>
-      
     </div>
-    </div>
-    
   );
 };
 
