@@ -1,3 +1,4 @@
+//Logog
 import React, { useEffect, useRef } from 'react';
 import $ from 'jquery';
 import 'slick-carousel/slick/slick.css';
@@ -123,6 +124,9 @@ const LogoBack = () => {
   }, []);
 
   return (
+
+    <div className="logo-back-container">
+
     <div className="split-slideshow" ref={splitSlideshowRef}>
       <div className="slideshow">
         <div className="slider">
@@ -146,10 +150,10 @@ const LogoBack = () => {
         <div className="item">Erosion</div>
         <div className="item">Shape</div>
       </div>
-      <a className="the-most" target="_blank" href="https://codepen.io/2017/popular/pens/10/" rel="noopener noreferrer">
-        <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/themost-2017.png" alt="The Most" />
-      </a>
+      
     </div>
+    </div>
+    
   );
 };
 
