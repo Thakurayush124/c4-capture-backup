@@ -46,8 +46,8 @@ function Nav() {
           <img src={logo} alt="Logo" className="logo" />
         </div>
         <div className="right">
-          <ul className="navbar-list">
-            <li className="navbar-item"><Link to="/">Home</Link></li>
+          <ul className="navbar-list text-with-borders">
+            <li className="navbar-item letter"><Link className="letter" to="/">Home</Link></li>
             <li className="navbar-item"><Link to="/about">About</Link></li>
             <li className="navbar-item"
                 onMouseEnter={() => setIsServicesHovering(true)}

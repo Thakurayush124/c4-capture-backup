@@ -1,7 +1,7 @@
 .navbar {
-    backdrop-filter: blur(7px) saturate(200%);
+    backdrop-filter: blur(3px) saturate(100%);
     -webkit-backdrop-filter: blur(7px) saturate(200%);
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+    background: linear-gradient(to bottom, rgba(159, 128, 128, 0.62), rgba(255, 255, 255, 0));
     position: absolute;
     top: 0;
     left: 0;
@@ -56,7 +56,13 @@
     color: aqua;
 }
 
-
+.navbar-item:hover {
+    border-radius: 10px;
+    backdrop-filter: blur(3px) saturate(100%);
+    -webkit-backdrop-filter: blur(7px) saturate(200%);
+    background: linear-gradient(rgba(50, 21, 13, 0.341));
+    
+  }
 /* Styling for the logo */
 
 
@@ -233,9 +239,6 @@
     align-items: center;
     transition: flex-direction 0.5s ease;
 }
-.navbar-item:hover {
-    background-color: #f1f1f1;
-  }
 
   .dropdown{
     background-color: rgb(89, 65, 33);
@@ -254,4 +257,30 @@
     margin:5px 0;
     margin-right:30px;
 
+}
+.text-with-borders {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px; /* Adjust font size as needed */
+    font-weight: bold; /* Make the font bold */
+    font-family: 'Arial', sans-serif; /* Choose your preferred font */
+    color: rgb(255, 255, 255); /* Text color */
+    margin: 20px; /* Add some margin for spacing */
+    letter-spacing: 1px; /* Add gap between characters */
+    gap: 20px; /* Spacing between letters (flex gap) */
+}
+
+.text-with-borders .letter {
+    color :white;
+    position: relative;
+    display: inline-block;
+    padding: 0 10px; /* Add padding around each letter */
+    margin: 0px; /* Add margin between each letter */
+     /* Background color for letters */
+    text-shadow: 
+        -1.2px -1.2px 0px rgb(20, 0, 0),  /* Top-left shadow */
+        1.2px -1.2px 0px rgb(24, 0, 0),   /* Top-right shadow */
+        -1.2px 1.2px 0px black,   /* Bottom-left shadow */
+        1.2px 1.2px 0px black;    /* Bottom-right shadow */
 }
