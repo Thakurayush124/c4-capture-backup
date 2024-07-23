@@ -1,0 +1,14 @@
+.about-service-image ,.elementor-widget-wrap {
+    display: flex;
+    background-color: rgba(177, 177, 219, 0.279);
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.elementor-section-height-default{
+    margin:100px 0;     
+}

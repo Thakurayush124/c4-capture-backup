@@ -1,47 +1,12 @@
 import React from "react";
 import './Home.css'; // Ensure the correct path to the CSS file
-import video from './banni.mp4';
 import Nav from '../component/Nav.js';
 import Footer from '../component/footer.js';
 import WhatsappFloat from '../component/flt_wtp.js';
+import AboutService from '../component/AboutService.js';
 import LogoTilt from "../component/LogoTilt.js";
 
 import LogoBack from '../component/LogoBack.js';
-
-
-const services = [
-  "WEDDING SHOOTS",
-  "PRE-WEDDING",
-  "POST WEDDING",
-  "MATERNITY SHOOT",
-  "PARTY SHOOTS",
-  "EVENT SHOOT",
-  "VISUAL CONTENT PRODUCTION",
-  "AERIAL PHOTO AND VIDEOGRAPHY",
-  "CLIENT TESTIMONIAL VIDEO PRODUCTION",
-  "REAL-ESTATE PHOTO & VIDEOGRAPHY",
-  "TRAVEL SHOOT",
-  "FOOD PHOTO AND VIDEOGRAPHY",
-  "VR 360 PRODUCTION",
-  "BIRTHDAY SHOOT"
-];
-
-const serviceImages = [
-  './service1.jpg',
-  './service2.jpg',
-  './service3.jpg',
-  './service4.jpg',
-  './service5.jpg',
-  './service6.jpg',
-  './service7.jpg',
-  './service8.jpg',
-  './service9.jpg',
-  './service10.jpg',
-  './service11.jpg',
-  './service12.jpg',
-  './service13.jpg',
-  './service14.jpg'
-];
 
 
 function Home() {
@@ -65,17 +30,8 @@ function Home() {
         <p>We are the pioneers of modern wedding photography and filmmaking in India and our award-winning team documents stories of love from all around the world since 2014. Founded by Anupam Maurya & Soumi Goswami, KnotsbyAMP is a collective of fine art photographers and filmmakers that has covered a rich kaleidoscope of Indian Weddings and is winner of multiple Wedding Photographer of the Year titles and international recognition.</p>
         <button className="but">Get in touch</button>
       </div>
-      <div className="services">
-        <h2>Our Services</h2>
-        <div className="grid-container-1">
-          {services.map((service, index) => (
-            <div key={index} className="grid-item-1">
-              <img src={serviceImages[index]} alt={service} className="service-image" />
-              <p>{service}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      
+      
       <div className="slider">
         <input type="radio" name="testimonial" id="t-1" />
         <input type="radio" name="testimonial" id="t-2" />
@@ -109,7 +65,7 @@ function Home() {
         </div>
       </div>
 
-
+      <AboutService />
 
       <div className="get-in-touch">
         < p >Get in touch</p>
