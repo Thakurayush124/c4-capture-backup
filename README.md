@@ -19,9 +19,3 @@ We are actively working on this project, and here's the current status of our pa
 ](https://www.thewedcafe.com/pre-wedding-photography/)
 ## Getting Started
 
-To get started with this project, follow these steps:
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/your-username/event-management-website.git
-   cd event-management-website
