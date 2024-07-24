@@ -1,73 +1,70 @@
-import React, { useState } from 'react';
-import './Nav-foot.css'; 
+import React, { useState, useEffect } from 'react';
+import './Nav-foot.css';
 import logo from './logo.png';
 import { Link } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 function Nav() {
   const [isServicesHovering, setIsServicesHovering] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const dropdownStyles = {
-    dropdown: {
-      display: isServicesHovering ? 'block' : 'none',
-      position: 'absolute',
-      backgroundColor: '#f9f9f9',
-      minWidth: '160px',
-      boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
-      zIndex: 1,
-    },
-    dropdownItem: {
-      color: 'black',
-      padding: '12px 16px',
-      textDecoration: 'none',
-      display: 'block',
-    },
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const NavContent = () => (
+    <ul className="navbar-list text-with-borders">
+      <li className="navbar-item letter">
+        <Link className="letter" to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+      </li>
+      <li className="navbar-item">
+        <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+      </li>
+      <li className="navbar-item services-dropdown"
+          onMouseEnter={() => setIsServicesHovering(true)}
+          onMouseLeave={() => setIsServicesHovering(false)}
+      >
+        <Link to="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
+        <div className={`dropdown ${isServicesHovering ? 'show' : ''}`}>
+          <Link to="/services/web-development" onClick={() => setIsMobileMenuOpen(false)}>Web Development</Link>
+          <Link to="/services/mobile-apps" onClick={() => setIsMobileMenuOpen(false)}>Mobile Apps</Link>
+          <Link to="/services/cloud-solutions" onClick={() => setIsMobileMenuOpen(false)}>Cloud Solutions</Link>
+          <Link to="/services/consulting" onClick={() => setIsMobileMenuOpen(false)}>Consulting</Link>
+        </div>
+      </li>
+      <li className="navbar-item">
+        <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+      </li>
+      <li className="navbar-item">
+        <Link to="/part" onClick={() => setIsMobileMenuOpen(false)}>Part</Link>
+      </li>
+    </ul>
+  );
+
   return (
-    <>
-    {/* <nav className="navbar">
-                <div className="left">
-                    <img src={logo} alt="Logo" className="logo" />
-                </div>
-                <div className="right">
-                    <ul className="navbar-list">
-                        <li className="navbar-item"><Link to="/">Home</Link></li>
-                        <li className="navbar-item"><Link to="/about">About</Link></li>
-                        <li className="navbar-item"><Link to="/services">Services</Link></li>
-                        <li className="navbar-item"><Link to="/contact">Contact</Link></li>
-                        <li className="navbar-item"><Link to="/part">Part</Link></li>
-                    </ul>
-                </div>
-            </nav> */}
-            
-
-      <nav className="navbar">
-        <div className="left">
-          <img src={logo} alt="Logo" className="logo" />
+    <nav className="navbar">
+      <div className="navbar-content">
+        <img src={logo} alt="Logo" className="logo" />
+        {windowWidth > 768 && <NavContent />}
+        {windowWidth <= 768 && (
+          <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        )}
+      </div>
+      {windowWidth <= 768 && isMobileMenuOpen && (
+        <div className="mobile-menu">
+          <NavContent />
         </div>
-        <div className="right">
-          <ul className="navbar-list text-with-borders">
-            <li className="navbar-item letter"><Link className="letter" to="/">Home</Link></li>
-            <li className="navbar-item"><Link to="/about">About</Link></li>
-            <li className="navbar-item"
-                onMouseEnter={() => setIsServicesHovering(true)}
-                onMouseLeave={() => setIsServicesHovering(false)}
-            >
-              <Link to="/services">Services</Link>
-              <div style={dropdownStyles.dropdown} className="dropdown">
-                <Link to="/services/web-development" style={dropdownStyles.dropdownItem}>Web Development</Link>
-                <Link to="/services/mobile-apps" style={dropdownStyles.dropdownItem}>Mobile Apps</Link>
-                <Link to="/services/cloud-solutions" style={dropdownStyles.dropdownItem}>Cloud Solutions</Link>
-                <Link to="/services/consulting" style={dropdownStyles.dropdownItem}>Consulting</Link>
-              </div>
-            </li>
-            <li className="navbar-item"><Link to="/contact">Contact</Link></li>
-            <li className="navbar-item"><Link to="/part">Part</Link></li>
-          </ul>
-        </div>
-      </nav>
-
-    </>
+      )}
+    </nav>
   );
 }
 

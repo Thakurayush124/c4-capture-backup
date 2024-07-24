@@ -2,285 +2,127 @@
     backdrop-filter: blur(3px) saturate(100%);
     -webkit-backdrop-filter: blur(7px) saturate(200%);
     background: linear-gradient(to bottom, rgba(159, 128, 128, 0.62), rgba(255, 255, 255, 0));
-    position: absolute;
+    padding: 1rem;
+    position: fixed; /* Change this to 'absolute' if you don't want it to stay fixed while scrolling */
     top: 0;
     left: 0;
-    width: 100%;
-    z-index: 1000;
+    right: 0;
+    z-index: 1000; /* Ensure this is higher than your slider's z-index */
+  }
+  
+  /* Rest of your CSS remains the same */
+  
+  @media (max-width: 768px) {
+    .navbar {
+      position: fixed; /* Keep it fixed on mobile as well */
+      width: 100%; /* Ensure full width on mobile */
+    }
+  
+    .mobile-menu {
+      position: fixed;
+      top: 60px; /* Adjust based on your navbar height */
+      left: 0;
+      right: 0;
+      background: inherit; /* This will inherit the navbar's background */
+      backdrop-filter: blur(3px) saturate(100%);
+      -webkit-backdrop-filter: blur(7px) saturate(200%);
+      z-index: 999; /* Just below the navbar */
+    }
+  
+    /* Rest of your mobile styles remain the same */
+  }
+  
+  .navbar-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5px 0;
-}
-
-
-.navbar-list {
+  }
+  
+  .logo {
+    height: 40px;
+  }
+  
+  .navbar-list {
+    display: flex;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: flex-end;
-    
-}
-
-.navbar-item {
-    padding: 10px 20px;
-
-}
-
-.navbar-item a {
-    color: rgb(0, 0, 0);
-    
-    text-align: center;
+  }
+  
+  .navbar-item {
+    margin-left: 1rem;
+  }
+  
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .services-dropdown {
+    position: relative;
+  }
+  
+  .dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown.show {
+    display: block;
+  }
+  
+  .dropdown a {
+    color: black;
+    padding: 12px 16px;
     text-decoration: none;
     display: block;
-    position: relative; /* Needed for the ::after pseudo-element */
-}
-.navbar-item a:hover{
-    color:darkorange;
-}
-.navbar-item a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    border:#ffffff;
-    background-color: rgb(6, 6, 44)   ;
-    transition: width 0.3s ease-in; /* Ease-in transition for width */
-}
-
-.navbar-item a:hover::after {
-    width: 100%;
-    color: aqua;
-}
-
-.navbar-item:hover {
-    border-radius: 10px;
-    backdrop-filter: blur(3px) saturate(100%);
-    -webkit-backdrop-filter: blur(7px) saturate(200%);
-    background: linear-gradient(rgba(50, 21, 13, 0.341));
-    
   }
-/* Styling for the logo */
-
-
-.container {
-    overflow: hidden; /* Handle specific container overflow */
-}
-
-/* Logo */
-.logo {
-    width: 90px;
-    height: 70px;
-    padding: 2px 0;
-    margin: 0 15px;
-}
-
-/* Styling for the "Get in touch" section */
-.shashwat-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 10px 0;
-}
-
-.get-in-touch {
-    padding: 5px 0;
-    background-color: #000000;
-    color: #ffffff;
-    width: 80%;
-    padding: 5% 0;
-    margin: 0 10%;
-    text-align: center;
-}
-
-
-/* Footer styling */
-.footerx {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 0;
-    flex-direction: row;
-    width:80%;
-    margin: 0 10%;
-    transition: flex-direction 0.5s ease;
-    position: relative;
-    z-index: 1; 
-}
-
-@media (max-width: 768px) {
-    .footerx {
-        flex-direction: column;
-        margin :0 10% 0 10%;
-    }
-
-    .footer-item {
-        width: 100%;
-        text-align: center;
-        margin: 10px 0;
-    }
-
-    .foot-logo {
-        margin: 0 auto;
-    }
-
-    .grid-container {
-        margin:0%;
-        padding:0%;
-    }
-}
-
-.footer-item {
-    margin: 10px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    transition: all 0.5s
-    ease;
-}
-
-/* Logo inside the footer */
-.foot-logo {
-    width: 150px;
-    height: 100px;
-    scale: 200%;
-}
-
-/* Grid container for footer links */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-    width: 80%;
-    max-width: 300px;
-    margin: 80px 75px;
-}
-
-/* Grid items (links) inside the footer */
-.grid-item {
-    padding: 5px 5px;
-    text-align: center;
-    text-decoration: none;
-    color: #000000;
-    transition: background-color 0.3s;
-}
-
-/* Additional footer information */
-.foot {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    margin: 15px 20px;
-    text-align: center;
-}
-
-/* Custom classes */
-.heading {
-    font-size: 4.9rem;
-    font-weight: 600;
-    color: #000000;
-    text-align: center;
-}
-
-.sub-heading {
-    font-size: 3.5rem;
-    font-weight: 500;
-    color: #000000;
-    text-align: center;
-}
-
-.sub-sub-heading {
-    font-size: 1.9rem;
-    font-weight: 400;
-    color: #000000;
-    text-align: center;
-}
-
-.para-mini-txt {
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #000000;
-    line-height: 1.6;
-    margin-bottom: 1em;
-    text-align: justify;
-}
-
-.para-mini-mini-text {
-    font-size: 0.8rem;
-}
-@media (max-width: 768px) {
-   
-    .grid-container {
-        margin:20px;
-        padding:0%;
-    }
-}
-
-@media (max-width: 320px) {
-    .shashwat-footer {
-        min-height: 100px;
-    }
-    .font p{
-        font-size: 0.7rem;
-        margin: 0 5px;
-    }
-}
-.navbar{
-    background-color:;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    transition: flex-direction 0.5s ease;
-}
-
-  .dropdown{
-    background-color: rgb(89, 65, 33);
+  
+  .dropdown a:hover {
+    background-color: #f1f1f1;
   }
-@media (max-width: 560px) {
-    .navbar {
-        flex-direction: column;
-        transition-property: flex-direction;
-        transition-duration: 0.5s;
-        transition-timing-function: ease;
+  
+  @media (max-width: 768px) {
+    .mobile-menu-toggle {
+      display: block;
     }
-}
- .logo{
-    width: 120px;
-    height: 50px;
-    margin:5px 0;
-    margin-right:30px;
-
-}
-.text-with-borders {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 22px; /* Adjust font size as needed */
-    font-weight: bold; /* Make the font bold */
-    font-family: 'Arial', sans-serif; /* Choose your preferred font */
-    color: rgb(255, 255, 255); /* Text color */
-    margin: 20px; /* Add some margin for spacing */
-    letter-spacing: 1px; /* Add gap between characters */
-    gap: 20px; /* Spacing between letters (flex gap) */
-}
-
-.text-with-borders .letter {
-    color :white;
-    position: relative;
-    display: inline-block;
-    padding: 0 10px; /* Add padding around each letter */
-    margin: 0px; /* Add margin between each letter */
-     /* Background color for letters */
-    text-shadow: 
-        -1.2px -1.2px 0px rgb(20, 0, 0),  /* Top-left shadow */
-        1.2px -1.2px 0px rgb(24, 0, 0),   /* Top-right shadow */
-        -1.2px 1.2px 0px black,   /* Bottom-left shadow */
-        1.2px 1.2px 0px black;    /* Bottom-right shadow */
-}
+  
+    .navbar-list {
+      display: none;
+    }
+  
+    .mobile-menu {
+      margin-top: 1rem;
+    }
+  
+    .mobile-menu .navbar-list {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .mobile-menu .navbar-item {
+      margin: 0.5rem 0;
+    }
+  
+    .mobile-menu .dropdown {
+      position: static;
+      display: none;
+      box-shadow: none;
+    }
+  
+    .mobile-menu .services-dropdown:hover .dropdown,
+    .mobile-menu .dropdown.show {
+      display: block;
+    }
+  
+    .mobile-menu .dropdown a {
+      padding-left: 2rem;
+    }
+  }
