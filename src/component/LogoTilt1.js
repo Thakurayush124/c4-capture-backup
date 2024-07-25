@@ -1,12 +1,13 @@
-import React, { useEffect, useRef } from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, { useEffect, useRef, useState } from 'react';
+import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import { TweenLite, Power4 } from 'gsap';
+import { gsap } from 'gsap';
 
-const MovementModel = () => {
+const CanvasContents = ({ isMobile }) => {
   const { scene, animations } = useGLTF('/logo.gltf');
   const modelRef = useRef();
+  const { gl } = useThree();
 
   useEffect(() => {
     let mixer = null;
@@ -18,59 +19,107 @@ const MovementModel = () => {
       });
     }
 
-    const handleMouseMove = (e) => {
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
+    // Enable touch events to pass through
+    gl.domElement.style.touchAction = 'auto';
 
-      scene.traverse((node) => {
-        if (node.isMesh) {
-          TweenLite.to(node.rotation, 1.25, {
-            y: (e.clientX - centerX) / centerX * 0.639,
-            x: (e.clientY - centerY) / centerY * 0.639,
-            ease: Power4.easeOut,
+    return () => {
+      if (mixer) mixer.stopAllAction();
+    };
+  }, [animations, gl.domElement.style]);
+
+  // Convert degrees to radians
+  const rotationX = THREE.MathUtils.degToRad(325); // 10 degrees up
+  const rotationY = THREE.MathUtils.degToRad(-20);  // No rotation on Y-axis
+  const rotationZ = THREE.MathUtils.degToRad(0);  // 5 degrees to the left
+
+  return (
+    <>
+      <ambientLight intensity={10} color="#ffffff" />
+      <directionalLight position={[10, 10, 15]} intensity={1} color="#ffffff" />
+      <group ref={modelRef} rotation={[rotationX, rotationY, rotationZ]}>
+        <primitive object={scene} scale={[0.063, 0.07, 0.09]} position={[0, isMobile ? 0 : 1.5, 0]} />
+      </group>
+    </>
+  );
+};
+
+const LogoTilt = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const containerRef = useRef();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    const handleMouseMove = (e) => {
+      if (isMobile) return;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      containerRef.current.querySelectorAll('*').forEach((node) => {
+        if (node.object3D) {
+          gsap.to(node.object3D.rotation, {
+            duration: 0.7,
+            y: ((e.clientX - rect.left - centerX) / centerX) * 0.639,
+            x: ((e.clientY - rect.top - centerY) / centerY) * 0.639,
+            ease: "power4.out",
           });
         }
       });
     };
 
     const handleMouseLeave = () => {
-      scene.traverse((node) => {
-        if (node.isMesh) {
-          TweenLite.to(node.rotation, 1, {
+      if (isMobile) return;
+
+      containerRef.current.querySelectorAll('*').forEach((node) => {
+        if (node.object3D) {
+          gsap.to(node.object3D.rotation, {
+            duration: 0.5,
             y: 0,
             x: 0,
-            ease: Power4.easeOut,
+            ease: "power4.out",
           });
         }
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseleave', handleMouseLeave);
+    containerRef.current.addEventListener('mousemove', handleMouseMove);
+    containerRef.current.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('resize', checkMobile);
+      if (containerRef.current) {
+        containerRef.current.removeEventListener('mousemove', handleMouseMove);
+        containerRef.current.removeEventListener('mouseleave', handleMouseLeave);
+      }
     };
-  }, [animations, scene]);
+  }, [isMobile]);
 
   return (
-    <div style={{ width: '100%', height: '100vh' }}>
-      <Canvas>
-        <ambientLight intensity={10} color="#ffffff" />
-        <directionalLight position={[10, 10, 15]} intensity={1} color="#ffffff" />
-        <OrbitControls
-          enableRotate={false} // Disable rotation
-          enableZoom={false} // Disable zooming
-          enablePan={false} // Disable panning
-        />
-        <group ref={modelRef}>
-          {/* Adjust scale here to decrease size */}
-          <primitive object={scene} scale={[0.05, 0.05, 0.05]} />
-        </group>
+    <div 
+      ref={containerRef}
+      style={{ 
+        width: '100%', 
+        height: '100vh', 
+        position: 'relative', 
+        overflow: 'hidden',
+        touchAction: 'auto'
+      }}
+    >
+      <Canvas
+        style={{ background: 'transparent' }}
+        camera={{ position: [0, 0, 15], fov: 50 }}
+      >
+        <CanvasContents isMobile={isMobile} />
       </Canvas>
     </div>
   );
 };
 
-export default MovementModel;
+export default LogoTilt;
