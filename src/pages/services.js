@@ -11,6 +11,7 @@ function services() {
       <Nav />
       <div className="main-container">
         <div className="logo-tilt-wrapper">
+          <LogoBack />
         </div>
       </div>
       <WhatsappFloat />

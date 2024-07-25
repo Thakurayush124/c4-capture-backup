@@ -4,6 +4,7 @@ import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
 const CanvasContents = () => {
+  const [isMobile, setIsMobile] = useState(false);
   const { scene, animations } = useGLTF('/logo.gltf');
   const modelRef = useRef();
   const { gl, size } = useThree();
@@ -45,7 +46,7 @@ const CanvasContents = () => {
       // Fine-tuning based on specific width ranges
       if (width < 400) {
         scale *= 0.98;
-      } else if (width > 600) {
+      } else if (width > 600 && isMobile) {
         scale *= 1.05;
       }
 
@@ -56,13 +57,13 @@ const CanvasContents = () => {
   const rotationX = THREE.MathUtils.degToRad(325);
   const rotationY = THREE.MathUtils.degToRad(-20);
   const rotationZ = THREE.MathUtils.degToRad(0);
-
+  const yPosition = {size} < 520 ? 45 : 28;
   return (
     <>
       <ambientLight intensity={10} color="#ffffff" />
       <directionalLight position={[10, 10, 15]} intensity={1} color="#ffffff" />
       <group ref={modelRef} rotation={[rotationX, rotationY, rotationZ]}>
-        <primitive object={scene} position={[-3, 45, 0]} />
+        <primitive object={scene} position={[-3, yPosition, 0]} />
       </group>
     </>
   );

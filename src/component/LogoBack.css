@@ -129,6 +129,10 @@
     opacity: 1;
 }
 
+.slick-dots{
+    overflow: hidden;
+}
+
 .slideshow.slideshow-right {
     left: 0;
     z-index: 1;
