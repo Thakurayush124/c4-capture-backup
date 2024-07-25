@@ -182,3 +182,27 @@
     background-color: #f1f1f100;
   }
 }
+.text-with-borders {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: bold; /* Make the font bold */
+  font-family: 'Arial', sans-serif; /* Choose your preferred font */
+  color: white; /* Text color *//* Add some margin for spacing */
+  letter-spacing: 1px; /* Add gap between characters */
+  gap: 10px; /* Spacing between letters (flex gap) */
+}
+
+.text-with-borders .letter {
+  position: relative;
+  display: inline-block;
+  /* Add padding around each letter */
+  margin: 5px; /* Add margin between each letter */
+  color :white;/* Background color for letters */
+  text-shadow: 
+      -1.4px -1.4px 0px black,  /* Top-left shadow */
+      1.4px -1.4px 0px black,   /* Top-right shadow */
+      -1.4px 1.4px 0px black,   /* Bottom-left shadow */
+      1.4px 1.4px 0px black;    /* Bottom-right shadow */
+}
