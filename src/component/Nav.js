@@ -27,17 +27,17 @@ function Nav() {
       <li className="navbar-item">
         <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
       </li>
-      <li className="navbar-item services-dropdown"
-          onMouseEnter={() => setIsServicesHovering(true)}
-          onMouseLeave={() => setIsServicesHovering(false)}
-      >
+      <li className="navbar-item services-dropdown">
         <Link to="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
-        <div className={`dropdown ${isServicesHovering ? 'show' : ''}`}>
-          <Link to="/services/web-development" onClick={() => setIsMobileMenuOpen(false)}>Web Development</Link>
-          <Link to="/services/mobile-apps" onClick={() => setIsMobileMenuOpen(false)}>Mobile Apps</Link>
-          <Link to="/services/cloud-solutions" onClick={() => setIsMobileMenuOpen(false)}>Cloud Solutions</Link>
-          <Link to="/services/consulting" onClick={() => setIsMobileMenuOpen(false)}>Consulting</Link>
-        </div>
+        {(windowWidth <= 768 || isServicesHovering) && (
+          <div className="dropdown">
+            <Link to="/services/web-development" onClick={() => setIsMobileMenuOpen(false)}>Web Development</Link>
+            <Link to="/services/mobile-apps" onClick={() => setIsMobileMenuOpen(false)}>Mobile Apps</Link>
+            <Link to="/services/cloud-solutions" onClick={() => setIsMobileMenuOpen(false)}>Cloud Solutions</Link>
+            <Link to="/services/consulting" onClick={() => setIsMobileMenuOpen(false)}>Consulting</Link>
+            <Link to="/services" onClick={() => setIsMobileMenuOpen(false)}>All Services</Link>
+          </div>
+        )}
       </li>
       <li className="navbar-item">
         <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>

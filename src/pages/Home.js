@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import './Home.css'; // Ensure the correct path to the CSS file
 import Nav from '../component/Nav.js';
 import Footer from '../component/footer.js';
 import WhatsappFloat from '../component/flt_wtp.js';
 import AboutService from '../component/AboutService.js';
 import LogoTilt from "../component/LogoTilt.js";
+import LogoTilt1 from "../component/LogoTilt1.js";
 
 import LogoBack from '../component/LogoBack.js';
 
-
+  
 function Home() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Check initially
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const handleWhatsAppClick = () => {
     const phoneNumber = '+917042405605'; // Replace with your WhatsApp number
     const message = 'Hello, I would like to inquire about your services.'; // Replace with your custom message
@@ -23,7 +38,7 @@ function Home() {
       <div className="main-container">
         <LogoBack />
         <div className="logo-tilt-wrapper">
-          <LogoTilt />
+            {isMobile ? <LogoTilt1 /> : <LogoTilt />}
         </div>
       </div>
       <div className="content">
