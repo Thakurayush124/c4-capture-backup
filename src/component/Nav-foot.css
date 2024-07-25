@@ -1,168 +1,184 @@
+/* Base navbar styles */
 .navbar {
-    backdrop-filter: blur(3px) saturate(100%);
-    -webkit-backdrop-filter: blur(7px) saturate(200%);
-    background: linear-gradient(to bottom, rgba(159, 128, 128, 0.62), rgba(255, 255, 255, 0));
-    padding: 1rem;
-    position: fixed; /* Change this to 'absolute' if you don't want it to stay fixed while scrolling */
-    top: 0;
+  backdrop-filter: blur(3px) saturate(100%);
+  -webkit-backdrop-filter: blur(7px) saturate(200%);
+  background: linear-gradient(to bottom, rgba(159, 128, 128, 0.62), rgba(255, 255, 255, 0));
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; 
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar-visible {
+  transform: translateY(0);
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+}
+
+/* Navbar list styles */
+.navbar-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-item {
+  margin-left: 1rem;
+  padding: 10px 20px;
+}
+
+.navbar-item a {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  position: relative;
+}
+
+.navbar-item a:hover {
+  color: darkorange;
+}
+
+.navbar-item a::after {
+  content: '';
+  position: absolute;
+  color: blue;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  border: #ffffff;
+  background-color: rgb(6, 6, 44);
+  transition: width 0.3s ease-in;
+}
+
+.navbar-item a:hover::after {
+  width: 100%;
+  color: aqua;
+}
+
+/* Dropdown styles */
+.services-dropdown {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.48);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.9px);
+  -webkit-backdrop-filter: blur(10.9px);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  padding: 5px;
+}
+
+.dropdown.show {
+  display: block;
+}
+
+.dropdown a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.19);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.7px);
+  -webkit-backdrop-filter: blur(3.7px);
+  border-radius: 5px;
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Media queries for mobile */
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    width: 100%;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .navbar-list {
+    display: none;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 60px;
     left: 0;
     right: 0;
-    z-index: 1000; /* Ensure this is higher than your slider's z-index */
+    background: rgba(255, 255, 255, 0.218);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 999;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
   }
-  
-  /* Rest of your CSS remains the same */
-  
-  @media (max-width: 768px) {
-    .navbar {
-      position: fixed; /* Keep it fixed on mobile as well */
-      width: 100%; /* Ensure full width on mobile */
-    }
-  
-    .mobile-menu {
-      position: fixed;
-      top: 60px; /* Adjust based on your navbar height */
-      left: 0;
-      right: 0;
-      background: inherit; /* This will inherit the navbar's background */
-      backdrop-filter: blur(3px) saturate(100%);
-      -webkit-backdrop-filter: blur(7px) saturate(200%);
-      z-index: 999; /* Just below the navbar */
-    }
-  
-    /* Rest of your mobile styles remain the same */
-  }
-  
-  .navbar-content {
+
+  .mobile-menu .navbar-list {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
   }
-  
-  .logo {
-    height: 40px;
+
+  .mobile-menu .navbar-item {
+    margin: 0.5rem 0;
   }
-  
-  .navbar-list {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar-item {
+
+  .mobile-menu .dropdown {
+    position: static;
+    display: block;
+    background: none;
+    box-shadow: none;
     margin-left: 1rem;
   }
-  
-  .mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
+
+  .mobile-menu .dropdown a {
+    padding: 0.5rem 0;
   }
-  
-  .services-dropdown {
-    position: relative;
-  }
-  
-  .dropdown {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown.show {
+
+  .mobile-menu .services-dropdown:hover .dropdown,
+  .mobile-menu .dropdown.show {
     display: block;
   }
-  
-  .dropdown a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
+
   .dropdown a:hover {
-    background-color: #f1f1f1;
+    background-color: #f1f1f100;
   }
-  
-  @media (max-width: 768px) {
-    .mobile-menu-toggle {
-      display: block;
-    }
-  
-    .navbar-list {
-      display: none;
-    }
-  
-    .mobile-menu {
-      margin-top: 1rem;
-    }
-  
-    .mobile-menu .navbar-list {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .mobile-menu .navbar-item {
-      margin: 0.5rem 0;
-    }
-  
-    .mobile-menu .dropdown {
-      position: static;
-      display: none;
-      box-shadow: none;
-    }
-  
-    .mobile-menu .services-dropdown:hover .dropdown,
-    .mobile-menu .dropdown.show {
-      display: block;
-    }
-  
-    .mobile-menu .dropdown a {
-      padding-left: 2rem;
-    }
-  }
-  @media (max-width: 768px) {
-    .navbar {
-      position: fixed;
-      width: 100%;
-    }
-  
-    .mobile-menu {
-      position: fixed;
-      top: 60px; /* Adjust based on your navbar height */
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.218); /* Light background with opacity */
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index: 999;
-      padding: 1rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-  
-    .mobile-menu .navbar-list {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .mobile-menu .navbar-item {
-      margin: 0.5rem 0;
-    }
-  
-    .mobile-menu .dropdown {
-      position: static;
-      display: block;
-      background: none;
-      box-shadow: none;
-      margin-left: 1rem;
-    }
-  
-    .mobile-menu .dropdown a {
-      padding: 0.5rem 0;
-    }
-  }
+}
