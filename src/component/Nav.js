@@ -16,7 +16,6 @@ function Nav() {
     dropdown: {
       display: isServicesHovering ? 'block' : 'none',
       position: 'absolute',
-      
       minWidth: '160px',
       zIndex: 1,
     },
@@ -27,6 +26,14 @@ function Nav() {
       textDecoration: 'none',
       display: 'block',
     },
+  };
+
+  const toggleScroll = (disable) => {
+    if (disable) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
   };
 
   useEffect(() => {
@@ -48,33 +55,38 @@ function Nav() {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    toggleScroll(!isMobileMenuOpen);
+  };
+
+  const handleMenuItemClick = () => {
+    setIsMobileMenuOpen(false);
+    toggleScroll(false);
   };
 
   const NavContent = ({ isMobile }) => (
-    
     <ul className="navbar-list text-with-borders">
-      <li className="navbar-item letter">
-        <Link className="letter" to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+      <li className="navbar-item">
+        <Link className="letter" to="/" onClick={handleMenuItemClick}>Home</Link>
       </li>
       <li className="navbar-item">
-        <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+        <Link to="/about" onClick={handleMenuItemClick}>About</Link>
       </li>
       {isMobile ? (
         <>
           <li className="navbar-item">
-            <Link to="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
+            <Link to="/services" onClick={handleMenuItemClick}>Services</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services/web-development" onClick={() => setIsMobileMenuOpen(false)}>- Web Development</Link>
+            <Link to="/services/web-development" onClick={handleMenuItemClick}>- Web Development</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services/mobile-apps" onClick={() => setIsMobileMenuOpen(false)}>- Mobile Apps</Link>
+            <Link to="/services/mobile-apps" onClick={handleMenuItemClick}>- Mobile Apps</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services/cloud-solutions" onClick={() => setIsMobileMenuOpen(false)}>- Cloud Solutions</Link>
+            <Link to="/services/cloud-solutions" onClick={handleMenuItemClick}>- Cloud Solutions</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services/consulting" onClick={() => setIsMobileMenuOpen(false)}>- Consulting</Link>
+            <Link to="/services/consulting" onClick={handleMenuItemClick}>- Consulting</Link>
           </li>
         </>
       ) : (
@@ -92,10 +104,10 @@ function Nav() {
         </li>
       )}
       <li className="navbar-item">
-        <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+        <Link to="/contact" onClick={handleMenuItemClick}>Contact</Link>
       </li>
       <li className="navbar-item">
-        <Link to="/part" onClick={() => setIsMobileMenuOpen(false)}>Part</Link>
+        <Link to="/part" onClick={handleMenuItemClick}>Join Us</Link>
       </li>
     </ul>
   );
