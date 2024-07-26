@@ -35,6 +35,12 @@ function Nav() {
       document.body.style.overflow = 'visible';
     }
   };
+  useEffect(() => {
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+      navbar.classList.add('nav_blur');
+    }
+  }, []);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -53,14 +59,29 @@ function Nav() {
     };
   }, [prevScrollPos]);
 
+
   const toggleMobileMenu = () => {
+    const navbar = document.querySelector('.navbar');
+    
+    if (!isMobileMenuOpen) {
+      navbar.classList.add('white');
+      navbar.classList.remove('nav_blur');
+    } else {
+      navbar.classList.remove('white');
+      navbar.classList.add('nav_blur');
+    }
+
     setIsMobileMenuOpen(!isMobileMenuOpen);
     toggleScroll(!isMobileMenuOpen);
   };
 
+
   const handleMenuItemClick = () => {
     setIsMobileMenuOpen(false);
     toggleScroll(false);
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.remove('white');
+    navbar.classList.add('nav_blur');
   };
 
   const NavContent = ({ isMobile }) => (
@@ -77,16 +98,16 @@ function Nav() {
             <Link to="/services" onClick={handleMenuItemClick}>Services</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services/web-development" onClick={handleMenuItemClick}>- Web Development</Link>
+            <Link to="/services/web-development" onClick={handleMenuItemClick}> Web Development</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services/mobile-apps" onClick={handleMenuItemClick}>- Mobile Apps</Link>
+            <Link to="/services/mobile-apps" onClick={handleMenuItemClick}>Mobile Apps</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services/cloud-solutions" onClick={handleMenuItemClick}>- Cloud Solutions</Link>
+            <Link to="/services/cloud-solutions" onClick={handleMenuItemClick}> Cloud Solutions</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services/consulting" onClick={handleMenuItemClick}>- Consulting</Link>
+            <Link to="/services/consulting" onClick={handleMenuItemClick}>Consulting</Link>
           </li>
         </>
       ) : (

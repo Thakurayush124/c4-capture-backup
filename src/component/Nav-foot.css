@@ -1,8 +1,13 @@
 /* Base navbar styles */
-.navbar {
+.white{
+  background: white;
+}
+.nav_blur{
   backdrop-filter: blur(3px) saturate(100%);
   -webkit-backdrop-filter: blur(7px) saturate(200%);
   background: linear-gradient(to bottom, rgba(159, 128, 128, 0.62), rgba(255, 255, 255, 0));
+}
+.navbar {
   padding: 1rem;
   position: fixed;
   top: 0;
@@ -124,8 +129,18 @@
 }
 
 /* Media queries for mobile */
+@media (min-width:770px) {
+  .navbar{
+    backdrop-filter: blur(3px) saturate(100%);
+    -webkit-backdrop-filter: blur(7px) saturate(200%);
+    background: linear-gradient(to bottom, rgba(159, 128, 128, 0.62), rgba(255, 255, 255, 0));
+
+  }
+}
 @media (max-width: 768px) {
   .navbar {
+    
+    
     position: fixed;
     width: 100%;
   }
