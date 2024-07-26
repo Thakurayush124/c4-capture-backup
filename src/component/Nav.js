@@ -4,7 +4,7 @@ import logo from './logo.png';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-function Nav() {
+function Nav() {  
   const [isServicesHovering, setIsServicesHovering] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
