@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import emailjs from 'emailjs-com';
 import Nav from "../component/Nav.js";
 import Footer from "../component/footer.js";
-import backimg from "./contact-bg.jpg";
+import backimg from "./join_us.jpg";
 import "./contact.css";
 import done from "./handshake.gif";
 
