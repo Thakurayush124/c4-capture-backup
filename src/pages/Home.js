@@ -4,7 +4,7 @@ import Nav from '../component/Nav.js';
 import Footer from '../component/footer.js';
 import WhatsappFloat from '../component/flt_wtp.js';
 import AboutService from '../component/AboutService.js';
-import LogoTilt from "../component/LogoTilt.js";
+import LogoTiltWrapper from "../component/LogoTilt.js";
 import LogoTilt1 from "../component/LogoTilt1.js";
 
 import LogoBack from '../component/LogoBack.js';
@@ -38,7 +38,7 @@ function Home() {
       <div className="main-container">
         <LogoBack />
         <div className="logo-tilt-wrapper">
-            {isMobile ? <LogoTilt1 /> : <LogoTilt />}
+            {isMobile ? <LogoTilt1 /> : <LogoTiltWrapper />}
         </div>
       </div>
       <div className="content">

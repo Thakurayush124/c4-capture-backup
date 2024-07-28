@@ -1,6 +1,7 @@
 import React from 'react';
 import img from '../img/weddingphotoslowresolution/2.jpg'
-
+import Nav from '../component/Nav.js';
+import Footer from '../component/footer.js';
 const ServiceCard = ({ imageSrc, title, description }) => {
   return (
     <div className="col-lg-6 col-md-6 img-box">
@@ -55,20 +56,25 @@ const ServicesSection = () => {
         }
       ];
       return (
+        <>
+        <Nav />
+        
         <section className="services-section services-normal spad">
           <div className="container" style={{paddingTop: '90px'}}>
             <div className="row">
               <div className="col-lg-12">
                 <div className="section-title">
-                  <h2 style={{textAlign: "center"}}>Our Services</h2>
+                  <h2 style={{textAlign: "center"}}>B2B and B2 service</h2>
                 </div>
               </div>
               {services.map((service, index) => (
-                <ServiceCard key={index} {...service} />
-              ))}
+                  <ServiceCard key={index} {...service} />
+                ))}
             </div>
           </div>
         </section>
+        <Footer />
+        </>
       );
     };
     export default ServicesSection;

@@ -1,11 +1,42 @@
-import React, { useEffect, useRef } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import { TweenLite, Power4 } from 'gsap';
+import gsap from 'gsap';
 
-const LogoTilt = () => {
-  const { scene, animations } = useGLTF('/logo.gltf');
+// Error Boundary Component
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.log('Error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong. Please try refreshing the page.</h1>;
+    }
+    return this.props.children;
+  }
+}
+
+// Loading component
+const Loader = () => (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <h2>Loading...</h2>
+  </div>
+);
+
+// Model component
+const Model = ({ url }) => {
+  const { scene, animations } = useGLTF(url);
   const modelRef = useRef();
 
   useEffect(() => {
@@ -24,10 +55,11 @@ const LogoTilt = () => {
 
       scene.traverse((node) => {
         if (node.isMesh) {
-          TweenLite.to(node.rotation, 0.7, {
+          gsap.to(node.rotation, {
+            duration: 0.7,
             y: ((e.clientX - centerX) / centerX) * 0.639,
             x: ((e.clientY - centerY) / centerY) * 0.639,
-            ease: Power4.easeOut,
+            ease: "power4.out",
           });
         }
       });
@@ -36,10 +68,11 @@ const LogoTilt = () => {
     const handleMouseLeave = () => {
       scene.traverse((node) => {
         if (node.isMesh) {
-          TweenLite.to(node.rotation, 0.5, {
+          gsap.to(node.rotation, {
+            duration: 0.5,
             y: 0,
             x: 0,
-            ease: Power4.easeOut,
+            ease: "power4.out",
           });
         }
       });
@@ -51,28 +84,49 @@ const LogoTilt = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
+      if (mixer) mixer.stopAllAction();
     };
   }, [animations, scene]);
 
   return (
-    <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
-      <Canvas
-        style={{ background: 'transparent' }}
-        camera={{ position: [0, 0, 10], fov: 50 }}
-      >
-        <ambientLight intensity={10} color="#ffffff" />
-        <directionalLight position={[10, 10, 15]} intensity={1} color="#ffffff" />
-        <OrbitControls
-          enableRotate={false} // Disable rotation
-          enableZoom={false} // Disable zooming
-          enablePan={false} // Disable panning
-        />
-        <group ref={modelRef}>
-          <primitive object={scene} scale={[0.05, 0.05, 0.05]} position={[0, 1.5, 0]} />
-        </group>
-      </Canvas>
-    </div>
+    <group ref={modelRef}>
+      <primitive object={scene} scale={[0.05, 0.05, 0.05]} position={[0, 1.5, 0]} />
+    </group>
   );
 };
 
-export default LogoTilt;
+// Main LogoTilt component
+const LogoTilt = () => {
+  const [modelUrl] = useState('/logo.gltf');
+
+  return (
+    <ErrorBoundary>
+      <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
+        <Canvas
+          style={{ background: 'transparent' }}
+          camera={{ position: [0, 0, 10], fov: 50 }}
+        >
+          <ambientLight intensity={10} color="#ffffff" />
+          <directionalLight position={[10, 10, 15]} intensity={1} color="#ffffff" />
+          <OrbitControls
+            enableRotate={false}
+            enableZoom={false}
+            enablePan={false}
+          />
+          <Suspense fallback={null}>
+            <Model url={modelUrl} />
+          </Suspense>
+        </Canvas>
+      </div>
+    </ErrorBoundary>
+  );
+};
+
+// Wrapper component with Suspense
+const LogoTiltWrapper = () => (
+  <Suspense fallback={<Loader />}>
+    <LogoTilt />
+  </Suspense>
+);
+
+export default LogoTiltWrapper;

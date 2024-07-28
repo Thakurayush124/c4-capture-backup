@@ -55,7 +55,7 @@ const About = () => {
      
 
       <main>
-        <section className="who-we-are">
+        <section className="who-we-are" style={{paddingTop: '90px'}}>
           <div className="container">
             <h2>Who We Are</h2>
             <p>

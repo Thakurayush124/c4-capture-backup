@@ -1,5 +1,6 @@
 import React from 'react';
-import img from '../img/weddingphotoslowresolution/2.jpg'
+import Nav from '../component/Nav.js';
+import Footer from '../component/footer.js';
 
 const ServiceCard = ({ imageSrc, title, description }) => {
   return (
@@ -34,12 +35,14 @@ const ServicesSection = () => {
         }
       ];
       return (
+        <>
+        <Nav />
         <section className="services-section services-normal spad">
           <div className="container" style={{paddingTop: '90px'}}>
             <div className="row">
               <div className="col-lg-12">
                 <div className="section-title">
-                  <h2 style={{textAlign: "center"}}>Our Services</h2>
+                  <h2 style={{textAlign: "center"}}>Family Event Service</h2>
                 </div>
               </div>
               {services.map((service, index) => (
@@ -48,6 +51,8 @@ const ServicesSection = () => {
             </div>
           </div>
         </section>
+              <Footer />
+                        </>
       );
     };
     export default ServicesSection;
