@@ -98,17 +98,12 @@ function Nav() {
             <Link to="/services" onClick={handleMenuItemClick}>Services</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services/web-development" onClick={handleMenuItemClick}> Web Development</Link>
+            <Link to="/services" onClick={handleMenuItemClick}> Event services</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services/mobile-apps" onClick={handleMenuItemClick}>Mobile Apps</Link>
+            <Link to="/services" onClick={handleMenuItemClick}>Mobile Apps</Link>
           </li>
-          <li className="navbar-item">
-            <Link to="/services/cloud-solutions" onClick={handleMenuItemClick}> Cloud Solutions</Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/services/consulting" onClick={handleMenuItemClick}>Consulting</Link>
-          </li>
+          
         </>
       ) : (
         <li className="navbar-item"
@@ -116,11 +111,9 @@ function Nav() {
           onMouseLeave={() => setIsServicesHovering(false)}
         >
           <Link to="/services">Services</Link>
-          <div style={dropdownStyles.dropdown} className="dropdown">
-            <Link to="/services/web-development" style={dropdownStyles.dropdownItem}>Web Development</Link>
-            <Link to="/services/mobile-apps" style={dropdownStyles.dropdownItem}>Mobile Apps</Link>
-            <Link to="/services/cloud-solutions" style={dropdownStyles.dropdownItem}>Cloud Solutions</Link>
-            <Link to="/services/consulting" style={dropdownStyles.dropdownItem}>Consulting</Link>
+          <div style={dropdownStyles.dropdown} className="dropdown low">
+            <Link to="/services" style={dropdownStyles.dropdownItem}>Family Event services</Link>
+            <Link to="/services" style={dropdownStyles.dropdownItem}>B2B & B2C Services</Link>
           </div>
         </li>
       )}

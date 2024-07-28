@@ -80,7 +80,7 @@ const ServicesSection = () => {
       ];
       return (
         <section className="services-section services-normal spad">
-          <div className="container">
+          <div className="container" style={{paddingTop: '90px'}}>
             <div className="row">
               <div className="col-lg-12">
                 <div className="section-title">

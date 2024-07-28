@@ -1,6 +1,5 @@
 
 import Nav from "../component/Nav.js";
-import WhatsappFloat from '../component/flt_wtp.js';
 import Footer from '../component/footer.js';
 import "./about.css";
 import React, { useState, useEffect } from 'react';
