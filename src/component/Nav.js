@@ -112,8 +112,8 @@ function Nav() {
         >
           <Link to="/services">Services</Link>
           <div style={dropdownStyles.dropdown} className="dropdown low">
-            <Link to="/services" style={dropdownStyles.dropdownItem}>Family Event services</Link>
-            <Link to="/services" style={dropdownStyles.dropdownItem}>B2B & B2C Services</Link>
+            <Link to="/drop1" style={dropdownStyles.dropdownItem}>Family Event services</Link>
+            <Link to="/drop2" style={dropdownStyles.dropdownItem}>B2B & B2C Services</Link>
           </div>
         </li>
       )}

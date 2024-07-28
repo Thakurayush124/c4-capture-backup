@@ -6,6 +6,8 @@ import Part from "./pages/part";
 import About from './pages/about';
 import Services from './pages/services';
 import Layout from "./pages/Layout";
+import Drop1 from './component/dropdown_service1';
+import Drop2 from './component/dropdown_service2';
 import './App.css'
 import $ from 'jquery';
 import 'slick-carousel';
@@ -25,7 +27,8 @@ function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/services" element={<Services/>} />
           <Route path="/contact" element={<Contact />} />
-
+          <Route path="/drop1" element={<Drop1 />} />
+          <Route path="/drop2" element={<Drop2 />} />
           <Route path="/Part" element={<Part/>} />
            
 
