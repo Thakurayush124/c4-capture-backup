@@ -3,17 +3,15 @@ import WhatsappFloat from '../component/flt_wtp.js';
 import LogoBack from '../component/LogoBack.js';
 import Footer from '../component/footer.js';
 import Nav from '../component/Nav.js';
-import LogoTilt from '../component/LogoTilt.js';
+import ServicesSection from '../component/service_content.js';
 function services() {
   return (
 
     <>
       <Nav />
-      <div className="main-container">
-        <div className="logo-tilt-wrapper">
-          <LogoBack />
-        </div>
-      </div>
+        <ServicesSection  />
+        {/* <div className="logo-tilt-wrapper">
+        </div> */}
       <WhatsappFloat />
       <Footer />
 
