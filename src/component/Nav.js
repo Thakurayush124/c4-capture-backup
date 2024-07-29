@@ -48,8 +48,19 @@ function Nav() {
 
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+      const isVisible = prevScrollPos > currentScrollPos || currentScrollPos < 10;
+      setVisible(isVisible);
       setPrevScrollPos(currentScrollPos);
+
+      // Add or remove 'nav_blur' class based on visibility
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        if (isVisible) {
+          navbar.classList.add('nav_blur');
+        } else {
+          navbar.classList.remove('nav_blur');
+        }
+      }
     };
     window.addEventListener('scroll', handleScroll);
 
@@ -58,7 +69,6 @@ function Nav() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [prevScrollPos]);
-
 
   const toggleMobileMenu = () => {
     const navbar = document.querySelector('.navbar');
@@ -74,7 +84,6 @@ function Nav() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     toggleScroll(!isMobileMenuOpen);
   };
-
 
   const handleMenuItemClick = () => {
     setIsMobileMenuOpen(false);
@@ -127,7 +136,7 @@ function Nav() {
   );
 
   return (
-    <nav className={`navbar ${visible ? 'navbar-visible' : 'navbar-hidden'}`}>
+    <nav className={`navbar ${visible ? 'navbar-visible' : 'navbar-hidden'} ${isMobileMenuOpen ? 'white' : 'nav_blur'}`}>
       <div className="navbar-content">
         <img src={logo} alt="Logo" className="logo" />
         {windowWidth > 768 && <NavContent isMobile={false} />}
