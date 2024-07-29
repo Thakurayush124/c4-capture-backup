@@ -15,17 +15,7 @@
     height: 100%;
     object-fit: cover;
 }
-.content {
-    background-color: black;
-    color: white;
-    text-align: center;
-    height: 250px;
-    width: 100%;
-    padding: 80px 1px; /* Adjust padding as needed */
-    margin-top: -100px; /* Adjust negative margin to overlap with .vd */
-    position: relative; /* Ensure relative positioning */
-    z-index: 2; /* Ensure it is above the video */
-}
+
 
 .content p {
     font-size: 20px; /* Adjust font size as needed */
@@ -47,11 +37,23 @@
 .get-in-touch button:hover {
     background-color: #555;
 }
+.content {
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: max-content;
+    width: 100%;
+    padding: 80px 1px; 
+     /* Adjust negative margin to overlap with .vd */
+    position: relative; /* Ensure relative positioning */
+    z-index: 2; /* Ensure it is above the video */
+}
 
 .content {
     max-width: 100%; /* Adjust based on your layout */
     margin: 0 auto;
-    padding: 20px;
+    margin-bottom: 50px;
+    padding: 60px 20px;
     text-align: center; /* Centers the button and text */
 }
 

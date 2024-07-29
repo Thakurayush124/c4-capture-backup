@@ -1,4 +1,3 @@
-
 import Nav from "../component/Nav.js";
 import Footer from '../component/footer.js';
 import "./about.css";
@@ -79,6 +78,7 @@ const About = () => {
             <a href="#" className="carousel-control next" onClick={nextSlide}>&#10095;</a>
           </div>
         </section>
+
 
         <section className="services">
           <div className="container">
