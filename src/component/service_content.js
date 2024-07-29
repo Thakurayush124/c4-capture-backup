@@ -1,6 +1,6 @@
 import React from 'react';
 import img from '../img/weddingphotoslowresolution/2.jpg'
-
+import Footer from '../component/footer.js';
 const ServiceCard = ({ imageSrc, title, description }) => {
   return (
     <div className="col-lg-6 col-md-6 img-box">
@@ -79,6 +79,7 @@ const ServicesSection = () => {
         }
       ];
       return (
+        <>
         <section className="services-section services-normal spad">
           <div className="container" style={{paddingTop: '90px'}}>
             <div className="row">
@@ -93,6 +94,8 @@ const ServicesSection = () => {
             </div>
           </div>
         </section>
+      <Footer />
+              </>
       );
     };
     export default ServicesSection;
