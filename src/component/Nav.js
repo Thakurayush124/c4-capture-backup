@@ -107,10 +107,10 @@ function Nav() {
             <Link to="/services" onClick={handleMenuItemClick}>Services</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services" onClick={handleMenuItemClick}> Event services</Link>
+            <Link to="/drop1" onClick={handleMenuItemClick}> Family Event services</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services" onClick={handleMenuItemClick}>Mobile Apps</Link>
+            <Link to="/drop2" onClick={handleMenuItemClick}>B2B & B2C Services</Link>
           </li>
           
         </>
