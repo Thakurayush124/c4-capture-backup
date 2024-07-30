@@ -1,12 +1,13 @@
 import Nav from "../component/Nav.js";
 import Footer from '../component/footer.js';
 import "./about.css";
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 
 const About = () => {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [imageCarouselIndex, setImageCarouselIndex] = useState(0);
+  const imageCarouselRef = useRef(null);
+
   const carouselItems = [
     { title: 'Expertise', description: 'Our team of professionals has years of experience in photography and videography across various domains.' },
     { title: 'Cutting-edge Equipment', description: 'We use the latest technology and equipment to ensure the highest quality output for all our projects.' },
@@ -19,39 +20,41 @@ const About = () => {
     'path_to_image_5.jpg', 'path_to_image_6.jpg', 'path_to_image_7.jpg', 'path_to_image_8.jpg'
   ];
 
-  const showSlide = (index) => {
-    setCarouselIndex(index);
-  };
-
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCarouselIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
-  };
+  }, [carouselItems.length]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCarouselIndex((prevIndex) => (prevIndex - 1 + carouselItems.length) % carouselItems.length);
-  };
+  }, [carouselItems.length]);
 
-  const slideImages = (direction) => {
-    if (direction === 'next') {
-      setImageCarouselIndex((prevIndex) => (prevIndex + 1) % imageCarouselItems.length);
-    } else {
-      setImageCarouselIndex((prevIndex) => (prevIndex - 1 + imageCarouselItems.length) % imageCarouselItems.length);
-    }
-  };
+  const slideImages = useCallback((direction) => {
+    setImageCarouselIndex((prevIndex) => {
+      const newIndex = direction === 'next'
+        ? (prevIndex + 1) % imageCarouselItems.length
+        : (prevIndex - 1 + imageCarouselItems.length) % imageCarouselItems.length;
+      
+      if (imageCarouselRef.current) {
+        imageCarouselRef.current.style.transform = `translateX(-${newIndex * 25}%)`;
+      }
+      
+      return newIndex;
+    });
+  }, [imageCarouselItems.length]);
 
   useEffect(() => {
     const autoSlideInterval = setInterval(nextSlide, 5000);
     return () => clearInterval(autoSlideInterval);
-  }, [carouselIndex]);
+  }, [nextSlide]);
 
   useEffect(() => {
     const imageAutoSlideInterval = setInterval(() => slideImages('next'), 3000);
     return () => clearInterval(imageAutoSlideInterval);
-  }, [imageCarouselIndex]);
+  }, [slideImages]);
 
   return (
     <div>
-     
+      <Nav />
 
       <main>
         <section className="who-we-are" style={{paddingTop: '90px'}}>
@@ -74,32 +77,31 @@ const About = () => {
                 </div>
               ))}
             </div>
-            <a href="#" className="carousel-control prev" onClick={prevSlide}>&#10094;</a>
-            <a href="#" className="carousel-control next" onClick={nextSlide}>&#10095;</a>
+            <button className="carousel-control prev" onClick={prevSlide}>&#10094;</button>
+            <button className="carousel-control next" onClick={nextSlide}>&#10095;</button>
           </div>
         </section>
-
 
         <section className="services">
           <div className="container">
             <div className="service-column">
               <h2>Wedding Services</h2>
-              <ul>
-                <li>Pre-wedding shoots</li>
-                <li>Wedding day coverage</li>
-                <li>Post-wedding sessions</li>
-                <li>Haldi ceremony</li>
-                <li>Mehndi celebration</li>
+              <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+                <li style={{ marginBottom: '10px' }}>Pre-wedding shoots</li>
+                <li style={{ marginBottom: '10px' }}>Wedding day coverage</li>
+                <li style={{ marginBottom: '10px' }}>Post-wedding sessions</li>
+                <li style={{ marginBottom: '10px' }}>Haldi ceremony</li>
+                <li style={{ marginBottom: '10px' }}>Mehndi celebration</li>
               </ul>
             </div>
             <div className="service-column">
               <h2>Commercial Services</h2>
-              <ul>
-                <li>Product photography</li>
-                <li>Corporate events</li>
-                <li>Advertising campaigns</li>
-                <li>Travel and tourism shoots</li>
-                <li>Video editing and post-production</li>
+              <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+                <li style={{ marginBottom: '10px' }}>Product photography</li>
+                <li style={{ marginBottom: '10px' }}>Corporate events</li>
+                <li style={{ marginBottom: '10px' }}>Advertising campaigns</li>
+                <li style={{ marginBottom: '10px' }}>Travel and tourism shoots</li>
+                <li style={{ marginBottom: '10px' }}>Video editing and post-production</li>
               </ul>
             </div>
           </div>
@@ -107,21 +109,30 @@ const About = () => {
 
         <section className="image-carousel">
           <div className="container">
-            <div className="image-carousel-inner" style={{ transform: `translateX(-${imageCarouselIndex * 25}%)` }}>
+            <div 
+              ref={imageCarouselRef}
+              className="image-carousel-inner" 
+              style={{ 
+                display: 'flex',
+                transition: 'transform 0.5s ease',
+                transform: `translateX(-${imageCarouselIndex * 25}%)`
+              }}
+            >
               {imageCarouselItems.map((src, index) => (
-                <div key={index} className="image-carousel-item">
-                  <img src={src} alt={`C4capture Portfolio ${index + 1}`} />
+                <div key={index} className="image-carousel-item" style={{ flex: '0 0 25%' }}>
+                  <img src={src} alt={`C4capture Portfolio ${index + 1}`} style={{ width: '100%', height: 'auto' }} />
                 </div>
               ))}
             </div>
-            <a href="#" className="image-carousel-control prev" onClick={(e) => { e.preventDefault(); slideImages('prev'); }}>&#10094;</a>
-            <a href="#" className="image-carousel-control next" onClick={(e) => { e.preventDefault(); slideImages('next'); }}>&#10095;</a>
+            <button className="image-carousel-control prev" onClick={() => slideImages('prev')}>&#10094;</button>
+            <button className="image-carousel-control next" onClick={() => slideImages('next')}>&#10095;</button>
           </div>
         </section>
 
         <PopupSection id="b2b" title="B2B Services" description="We provide tailored services for businesses including photography for products, events, and advertising campaigns." />
         <PopupSection id="b2c" title="B2C Services" description="Our B2C offerings include personalized photography services for weddings, parties, and special events." />
       </main>
+      <Footer />
     </div>
   );
 };
@@ -142,16 +153,12 @@ const PopupSection = ({ id, title, description }) => {
   }, [id]);
 
   return (
-    <>
-    <Nav/>
     <section className={`popup-section ${isActive ? 'active' : ''}`} id={id}>
       <div className="container">
         <h2>{title}</h2>
         <p>{description}</p>
       </div>
     </section>
-    <Footer />
-   </>
   );
 };
 
