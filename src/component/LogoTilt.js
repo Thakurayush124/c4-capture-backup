@@ -98,11 +98,63 @@ const Model = ({ url }) => {
 // Main LogoTilt component
 const LogoTilt = () => {
   const [modelUrl] = useState('/logo.gltf');
+  const canvasRef = useRef();
+
+  useEffect(() => {
+    const handleContextLost = (event) => {
+      event.preventDefault();
+      console.log('WebGL context lost. Attempting to restore...');
+      const canvas = event.target;
+      const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+      if (gl) {
+        gl.getExtension('WEBGL_lose_context').restoreContext();
+      }
+    };
+
+    const handleContextRestored = () => {
+      console.log('WebGL context restored.');
+      // Re-render your scene here
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        // Pause animations or reduce rendering quality
+      } else {
+        // Resume normal operation
+      }
+    };
+
+    const canvas = canvasRef.current;
+    if (canvas) {
+      canvas.addEventListener('webglcontextlost', handleContextLost);
+      canvas.addEventListener('webglcontextrestored', handleContextRestored);
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      if (canvas) {
+        canvas.removeEventListener('webglcontextlost', handleContextLost);
+        canvas.removeEventListener('webglcontextrestored', handleContextRestored);
+      }
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
+  const checkWebGLSupport = () => {
+    const canvas = document.createElement('canvas');
+    return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+  };
+
+  if (!checkWebGLSupport()) {
+    return <div>Your browser does not support WebGL</div>;
+  }
 
   return (
     <ErrorBoundary>
       <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
         <Canvas
+          ref={canvasRef}
           style={{ background: 'transparent' }}
           camera={{ position: [0, 0, 10], fov: 50 }}
         >

@@ -55,19 +55,19 @@ function Home() {
         <input type="radio" name="testimonial" id="t-5" />
         <div className="testimonials">
           <label className="item" htmlFor="t-1">
-            <h1>1</h1>
+            <h1  className='indx'>1</h1>
           </label>
           <label className="item" htmlFor="t-2">
-            <h1>2</h1>
+            <h1 className='indx'>2</h1>
           </label>
           <label className="item" htmlFor="t-3">
-            <h1>3</h1>
+            <h1 className='indx'>3</h1>
           </label>
           <label className="item" htmlFor="t-4">
-            <h1>4</h1>
+            <h1 className='indx'>4</h1>
           </label>
           <label className="item" htmlFor="t-5">
-            <h1>5</h1>
+            <h1 className='indx'>5</h1>
           </label>
         </div>
         <br />
