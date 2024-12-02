@@ -3,12 +3,13 @@ import $ from 'jquery';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick.min.js';
 import './LogoBack.css';
+import img1 from "../assets/service1.jpg";
 
 const LogoBack = () => {
   const splitSlideshowRef = useRef(null);
 
   useEffect(() => {
-    const initializeSlick = () => {
+    const initializeSlick = () => { 
       const $splitSlideshow = $(splitSlideshowRef.current);
       const $slider = $('.slideshow .slider', $splitSlideshow);
       const maxItems = $('.item', $slider).length;
@@ -106,7 +107,7 @@ const LogoBack = () => {
         <div className="slideshow">
           <div className="slider">
             <div className="item">
-              <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-2.jpg" alt="Canyon 2" />
+              <img src={img1} alt="Canyon 2" />
             </div>
             <div className="item">
               <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-3.jpg" alt="Canyon 3" />

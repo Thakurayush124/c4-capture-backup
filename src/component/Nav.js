@@ -99,18 +99,18 @@ function Nav() {
         <Link className="letter" to="/" onClick={handleMenuItemClick}>Home</Link>
       </li>
       <li className="navbar-item">
-        <Link to="/about" onClick={handleMenuItemClick}>About</Link>
+        <Link className="letter" to="/about" onClick={handleMenuItemClick}>About</Link>
       </li>
       {isMobile ? (
         <>
           <li className="navbar-item">
-            <Link to="/services" onClick={handleMenuItemClick}>Services</Link>
+            <Link className="letter" to="/services" onClick={handleMenuItemClick}>Services</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/drop1" onClick={handleMenuItemClick}> Family Event services</Link>
+            <Link className="letter" to="/drop1" onClick={handleMenuItemClick}> Family Event services</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/drop2" onClick={handleMenuItemClick}>B2B & B2C Services</Link>
+            <Link className="letter" to="/drop2" onClick={handleMenuItemClick}>B2B & B2C Services</Link>
           </li>
           
         </>
@@ -119,18 +119,18 @@ function Nav() {
           onMouseEnter={() => setIsServicesHovering(true)}
           onMouseLeave={() => setIsServicesHovering(false)}
         >
-          <Link to="/services">Services</Link>
+          <Link className="letter" to="/services">Services</Link>
           <div style={dropdownStyles.dropdown} className="dropdown low">
-            <Link to="/drop1" style={dropdownStyles.dropdownItem}>Family Event services</Link>
-            <Link to="/drop2" style={dropdownStyles.dropdownItem}>B2B & B2C Services</Link>
+            <Link  to="/drop1" style={dropdownStyles.dropdownItem}>Family Event services</Link>
+            <Link  to="/drop2" style={dropdownStyles.dropdownItem}>B2B & B2C Services</Link>
           </div>
         </li>
       )}
       <li className="navbar-item">
-        <Link to="/contact" onClick={handleMenuItemClick}>Contact</Link>
+        <Link className="letter" to="/contact" onClick={handleMenuItemClick}>Contact</Link>
       </li>
       <li className="navbar-item">
-        <Link to="/part" onClick={handleMenuItemClick}>Join Us</Link>
+        <Link className="letter" to="/part" onClick={handleMenuItemClick}>Join Us</Link>
       </li>
     </ul>
   );
