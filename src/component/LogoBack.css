@@ -6,6 +6,10 @@
     
   }
   
+  .fashion-item{
+    -webkit-text-stroke: 2px black; /* Sets a 2px black outline around text */
+    text-stroke: 2px black; /* For non-webkit browsers */
+  }
   .split-slideshow {
     position: absolute;
     top: 0;

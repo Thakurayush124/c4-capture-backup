@@ -121,7 +121,7 @@ const LogoBack = () => {
           </div>
         </div>
         <div className="slideshow-text">
-          <div className="item">Canyon</div>
+          <div className="item fashion-item">Fashion</div>
           <div className="item">Desert</div>
           <div className="item">Erosion</div>
           <div className="item">Shape</div>
