@@ -1,14 +1,180 @@
-.about-service-image ,.elementor-widget-wrap {
-    display: flex;
-    background-color: rgba(177, 177, 219, 0.279);
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+.about-service-image, .elementor-widget-wrap {
+  display: flex;
+  background-color: rgba(177, 177, 219, 0.279);
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
-.elementor-section-height-default{
-    margin:100px 0;     
+
+.elementor-section-height-default {
+  margin: 100px 0;
+}
+
+/* Add some margin and padding to the section */
+.elementor-section {
+  margin: 20px 0;
+  padding: 20px;
+}
+
+/* Add some margin to the heading */
+.heading-block {
+  margin-bottom: 20px;
+}
+
+/* Add some padding to the skill items */
+.skill-items-list .skill-item {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Adjust the figure element */
+.skill-item figure {
+  margin-bottom: 10px;
+}
+
+/* Adjust the paragraph spacing */
+.skill-item p {
+  margin-top: 10px;
+}
+
+/* Additional styles for the About component */
+.about-section {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.about-section h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-section ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.about-section ul li {
+  margin-bottom: 10px;
+}
+
+.carousel {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.carousel h2 {
+  margin-bottom: 10px;
+}
+
+.carousel p {
+  margin-bottom: 20px;
+}
+
+.carousel button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel button:hover {
+  background-color: #0056b3;
+}
+
+.image-carousel {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.image-carousel img {
+  max-width: 100%;
+  height: auto;
+}
+
+.image-carousel button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.image-carousel button:hover {
+  background-color: #0056b3;
+}
+
+.who-we-are {
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+.who-we-are h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.who-we-are p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.services {
+  padding: 40px 20px;
+  background-color: #f1f1f1;
+}
+
+.services .container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.services .service-column {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.services h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.services ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.services ul li {
+  margin-bottom: 10px;
+}
+
+.popup-section {
+  padding: 40px 20px;
+  background-color: #e9ecef;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.popup-section.active {
+  opacity: 1;
+}
+
+.popup-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.popup-section p {
+  text-align: center;
+  margin-bottom: 20px;
 }
